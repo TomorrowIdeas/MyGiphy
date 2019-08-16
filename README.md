@@ -1,6 +1,6 @@
 # MyGiphy
 Example project for iOS interviews
-
+Estimated Time: 2 hours
 Project Overview: Use the Giphy framework to display a list of gifs and detail view of an individual gif. 
 
 Guidelines
