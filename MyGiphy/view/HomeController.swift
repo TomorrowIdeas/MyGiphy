@@ -85,7 +85,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print("tapped view \(gifs[indexPath.item].downSampleUrl)")
         let detailController = DetailViewController(gif: gifs[indexPath.item])
         self.navigationController?.pushViewController(detailController, animated: true)
     }
