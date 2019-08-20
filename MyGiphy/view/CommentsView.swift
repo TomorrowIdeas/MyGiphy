@@ -10,6 +10,9 @@ import UIKit
 
 class CommentsView : UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout  {
     
+    var gifDatastore: GifDatastore
+    var gifId: String
+    
     lazy var collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
@@ -22,8 +25,16 @@ class CommentsView : UIView, UICollectionViewDataSource, UICollectionViewDelegat
         return cv
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    func refresh() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+    
+    init(gifId: String) {
+        self.gifDatastore = GifDatastore.getInstance()
+        self.gifId = gifId
+        super.init(frame: CGRect())
         
         addSubview(collectionView)
         
@@ -34,16 +45,18 @@ class CommentsView : UIView, UICollectionViewDataSource, UICollectionViewDelegat
         collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfSections section: Int) -> Int {
-        return 1
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if let gif = gifDatastore.getGifForId(id: gifId) {
+            return gif.comments.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CommentCell", for: indexPath) as! CommentCell
+        if let gif = gifDatastore.getGifForId(id: gifId) {
+            cell.comment = gif.comments[indexPath.item]
+        }
         cell.backgroundColor = .white
         return cell
     }
@@ -53,6 +66,6 @@ class CommentsView : UIView, UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
 }

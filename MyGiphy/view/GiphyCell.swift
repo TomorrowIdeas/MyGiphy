@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GiphyUISDK
 
 class GiphyCell: UICollectionViewCell {
     
@@ -17,25 +18,13 @@ class GiphyCell: UICollectionViewCell {
     
     var gif: Gif? {
         didSet {
-            gifView.image = nil
-            gifView.image = UIImage.gifImageWithURL(gif!.downSampleUrl!)
-//            gifView.image = UIImage
-            
-//            thumbnailImageView.image = UIImage(named: (video?.thumbnailImageName)!)
-//
-//            if let profileImageName = video?.channel?.profileImageName {
-//                userProfileImageView.image = UIImage(named: profileImageName)
-//            }
-            
-            
+            gifView.loadAsset(at: gif!.downSampleUrl!)
         }
     }
     
-    let gifView: UIImageView = {
-        let imageView = UIImageView(image: nil)
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        return imageView
+    let gifView: GPHMediaView = {
+        var mediaView = GPHMediaView()
+        return mediaView
     }()
     
     func setupViews() {

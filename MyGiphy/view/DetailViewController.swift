@@ -8,12 +8,15 @@
 
 import UIKit
 import Foundation
+import GiphyUISDK
 
 class DetailViewController: UIViewController {
     var gif: Gif
+    var gifDataStore: GifDatastore
     
     init(gif: Gif) {
         self.gif = gif
+        gifDataStore = GifDatastore.getInstance()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -25,13 +28,14 @@ class DetailViewController: UIViewController {
     }
     
     lazy var commentsView: CommentsView = {
-        let cv = CommentsView()
+        let cv = CommentsView(gifId: self.gif.id)
         cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
     }()
     
-    func addComment() {
-        print("add a new comment")
+    @objc func addComment() {
+        gifDataStore.addComment(gifId: gif.id, comment: newComment.text)
+        commentsView.refresh()
     }
     
     let addCommentButton: UIButton = {
@@ -43,7 +47,6 @@ class DetailViewController: UIViewController {
         button.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         button.titleLabel?.textAlignment = NSTextAlignment.center
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: Selector("addComment"), for: .touchUpInside)
         return button
     }()
     
@@ -52,8 +55,9 @@ class DetailViewController: UIViewController {
         
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.text = "New Comment Here"
-        textView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         textView.textColor = UIColor.black
+        textView.backgroundColor = UIColor(displayP3Red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
         textView.isEditable = true
         return textView
     }()
@@ -61,18 +65,18 @@ class DetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        let gifView: UIImageView = {
-            let imageView = UIImageView()
-            imageView.image = UIImage.gifImageWithURL(gif.originalUrl!)
-            imageView.contentMode = .scaleAspectFill
-            imageView.clipsToBounds = true
-            return imageView
+        let gifView: GPHMediaView = {
+            let mediaView = GPHMediaView()
+            mediaView.loadAsset(at: gif.originalUrl!)
+            return mediaView
         }()
         
         view.addSubview(gifView)
         view.addSubview(newComment)
         view.addSubview(addCommentButton)
         view.addSubview(commentsView)
+        
+        addCommentButton.addTarget(self, action: #selector(addComment), for: .touchUpInside)
         
         //gifview constraints
         view.addConstraint(NSLayoutConstraint(item: gifView, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0))

@@ -12,11 +12,14 @@ import GiphyCoreSDK
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
-    
-    var gifs = [Gif]()
+    var gifDataStore: GifDatastore
     let searchController = UISearchController(searchResultsController: nil)
     var searchWasCancelled = false
-    var searchText = ""
+    
+    init(layout: UICollectionViewLayout) {
+        gifDataStore = GifDatastore.getInstance()
+        super.init(collectionViewLayout: layout)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +42,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         searchController.isActive = true
         navigationItem.hidesSearchBarWhenScrolling = false
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
         searchGifs(searchPhrase: "Tomorrow")
+        
     }
     
     //this cancel button is overrided to be Search
@@ -53,29 +52,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         searchGifs(searchPhrase: searchController.searchBar.text!)
     }
     
-    //    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-    //        searchWasCancelled = false
-    //    }
-    //
-    //    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    //        searchWasCancelled = true
-    //    }
-    //
-    //    private func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-    //        if searchWasCancelled {
-    //            searchController.searchBar.text = self.searchText
-    //        } else {
-    //            self.searchText = searchController.searchBar.text!
-    //        }
-    //    }
-    
     override func collectionView(_: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return gifs.count
+        return gifDataStore.getGifs().count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! GiphyCell
-        cell.gif = gifs[indexPath.item]
+        cell.gif = gifDataStore.getGifs()[indexPath.item]
         
         return cell
     }
@@ -85,7 +68,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailController = DetailViewController(gif: gifs[indexPath.item])
+        let detailController = DetailViewController(gif: gifDataStore.getGifs()[indexPath.item])
         self.navigationController?.pushViewController(detailController, animated: true)
     }
     
@@ -95,20 +78,17 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             search = "Tomorrow"
         }
         
-        GiphyCore.shared.search(searchPhrase, media: .gif, offset: 0, limit: 24, rating: .ratedPG, lang: .english) { (response, error) in
+        GiphyCore.shared.search(searchPhrase, media: .gif, offset: 0, limit: 27, rating: .ratedPG, lang: .english) { (response, error) in
             if let medias = response?.data {
                 DispatchQueue.main.sync { [weak self] in
                     
-                    self?.gifs = [Gif]()
+                    self?.gifDataStore.clearGifs()
                     for media in medias {
-                        let downSampleUrl = media.images!.fixedHeightDownsampled!.gifUrl!
+                        let downSampleUrl = media.images!.fixedHeightSmall!.gifUrl!
                         let originalUrl = media.images!.downsizedMedium!.gifUrl!
-                        let newGif = Gif(id: media.id, downSampleUrl: downSampleUrl, originalUrl: originalUrl)
-                        self?.gifs.append(newGif)
+                        self?.gifDataStore.addGif(id: media.id, downSampleUrl: downSampleUrl, originalUrl: originalUrl)
                     }
-                    DispatchQueue.main.async {
-                        self?.collectionView?.reloadData()
-                    }
+                    self?.collectionView?.reloadData()
                 }
             }
         }
@@ -116,7 +96,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.bounds.width / 3
-        return CGSize(width: width, height: 200)    //200 because the sample gifs always have a height of 200
+        return CGSize(width: width, height: 100)    //100 because the sample gifs always have a height of 100
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -125,6 +105,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 

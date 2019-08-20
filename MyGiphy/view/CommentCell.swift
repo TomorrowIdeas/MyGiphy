@@ -15,12 +15,18 @@ class CommentCell: UICollectionViewCell {
         setupViews()
     }
     
+    var comment: String? {
+        didSet {
+            textView.text = comment
+        }
+    }
+    
     let textView: UITextView = {
         let textView = UITextView()
         
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.text = "A mysterious warrior teams up with the daughter and son of a deposed Chinese Emperor to defeat their cruel Uncle."
-        textView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        textView.text = ""
+        textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         textView.textColor = UIColor.white
         textView.backgroundColor = UIColor(displayP3Red: 70/255, green: 156/255, blue: 141/255, alpha: 1)
         textView.layer.cornerRadius = 10
