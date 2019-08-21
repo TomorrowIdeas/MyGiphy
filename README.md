@@ -7,7 +7,7 @@ Project Overview: Use the Giphy framework to display a list of gifs and detail v
 
 Guidelines
 
-1. Clone repo
+1. Fork the repo
 2. Install Giphy (https://developers.giphy.com/docs/sdk#content-types)
 3. Display a list of gifs for a given keyword of your choice.
 4. Display a detail view of a gif when selected from the list. 
