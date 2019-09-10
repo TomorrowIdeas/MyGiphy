@@ -1,0 +1,4 @@
+framework module GiphyPingbacksSDK {
+  header "GiphyPingbacksSDK-Swift.h"
+  requires objc
+}
