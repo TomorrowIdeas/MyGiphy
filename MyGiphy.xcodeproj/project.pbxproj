@@ -15,7 +15,6 @@
 		D67896F723074E880059BA75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67896F523074E880059BA75 /* LaunchScreen.storyboard */; };
 		FCBCFE13232773BE00FF5CBE /* MGGiphyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE12232773BE00FF5CBE /* MGGiphyCollectionViewCell.swift */; };
 		FCBCFE152327749300FF5CBE /* MGGiphyCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE142327749300FF5CBE /* MGGiphyCollectionViewCellViewModel.swift */; };
-		FCBCFE1A232785AF00FF5CBE /* MGGiphy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE19232785AF00FF5CBE /* MGGiphy.swift */; };
 		FCBCFE1D232794E300FF5CBE /* MGGiphySerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE1C232794E300FF5CBE /* MGGiphySerialization.swift */; };
 		FCBCFE212328551C00FF5CBE /* MGCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE202328551C00FF5CBE /* MGCoordinator.swift */; };
 		FCBCFE23232855B200FF5CBE /* MGStoryboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE22232855B200FF5CBE /* MGStoryboarded.swift */; };
@@ -37,7 +36,6 @@
 		D67896F823074E880059BA75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCBCFE12232773BE00FF5CBE /* MGGiphyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGGiphyCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCBCFE142327749300FF5CBE /* MGGiphyCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGGiphyCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
-		FCBCFE19232785AF00FF5CBE /* MGGiphy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGGiphy.swift; sourceTree = "<group>"; };
 		FCBCFE1C232794E300FF5CBE /* MGGiphySerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGGiphySerialization.swift; sourceTree = "<group>"; };
 		FCBCFE202328551C00FF5CBE /* MGCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGCoordinator.swift; sourceTree = "<group>"; };
 		FCBCFE22232855B200FF5CBE /* MGStoryboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGStoryboarded.swift; sourceTree = "<group>"; };
@@ -89,7 +87,6 @@
 			children = (
 				FCBCFE1F232854FB00FF5CBE /* Coordinators */,
 				FCBCFE1B232793AA00FF5CBE /* Data */,
-				FCBCFE18232784E600FF5CBE /* Model */,
 				FCBCFE112327736400FF5CBE /* ViewModel */,
 				FCBCFE0C2327723800FF5CBE /* View */,
 				D67896EC23074E860059BA75 /* AppDelegate.swift */,
@@ -126,14 +123,6 @@
 				FCBCFE142327749300FF5CBE /* MGGiphyCollectionViewCellViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		FCBCFE18232784E600FF5CBE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				FCBCFE19232785AF00FF5CBE /* MGGiphy.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		FCBCFE1B232793AA00FF5CBE /* Data */ = {
@@ -277,7 +266,6 @@
 				FCBCFE152327749300FF5CBE /* MGGiphyCollectionViewCellViewModel.swift in Sources */,
 				FCBCFE1D232794E300FF5CBE /* MGGiphySerialization.swift in Sources */,
 				FCBCFE23232855B200FF5CBE /* MGStoryboarded.swift in Sources */,
-				FCBCFE1A232785AF00FF5CBE /* MGGiphy.swift in Sources */,
 				FCBCFE252328564B00FF5CBE /* MainCoordinator.swift in Sources */,
 				FCBCFE212328551C00FF5CBE /* MGCoordinator.swift in Sources */,
 				FCBCFE2923285F4400FF5CBE /* MGGiphyDetailViewController.swift in Sources */,

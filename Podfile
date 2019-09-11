@@ -8,5 +8,5 @@ target 'MyGiphy' do
   # Pods for MyGiphy
   pod 'Giphy'
   pod 'SnapKit'
-  pod 'SwiftyGif'
+  pod 'Kingfisher'
 end

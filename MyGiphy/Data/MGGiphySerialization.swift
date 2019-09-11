@@ -10,10 +10,10 @@ import Foundation
 import GiphyCoreSDK
 
 final class MGGiphySerialization {
-    func searchForGiphy(_ text: String, completion: @escaping (([MGGiphyCollectionViewCellViewModel]) -> Void)) {
+    func searchForGiphy(_ text: String, _ currentTotal: Int, completion: @escaping (([MGGiphyCollectionViewCellViewModel]) -> Void)) {
         var viewModels: [MGGiphyCollectionViewCellViewModel] = []
         
-        GiphyCore.shared.search(text, media: .gif, offset: 0, limit: 50, rating: .ratedPG13, lang: .english) { response, error in
+        GiphyCore.shared.search(text, media: .gif, offset: currentTotal, limit: 25, rating: .ratedPG13, lang: .english) { response, error in
             
             if let error = error as NSError? {
                 print(error)

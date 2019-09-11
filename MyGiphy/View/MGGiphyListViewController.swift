@@ -15,6 +15,7 @@ class MGGiphyListViewController: UIViewController, MGStoryboarded {
     
     weak var coordinator: MainCoordinator?
     lazy var search = UISearchController(searchResultsController: nil)
+    private var isLoading: Bool = false
     
     var viewModels: [MGGiphyCollectionViewCellViewModel] = [] {
         didSet {
@@ -47,22 +48,27 @@ class MGGiphyListViewController: UIViewController, MGStoryboarded {
     
     @objc private func fetchGiphys(_ searchBar: UISearchBar) {
         if let text = searchBar.text {
-            print(text)
-            giphyService.searchForGiphy(text) { vms in
-                self.viewModels = vms
-            }
+            searchWithOffset(text)
         }
-        
     }
     
-    private func triggerSearch() {
+    func searchWithOffset(_ text: String) {
+        let currentTotal = viewModels.count
+        
+        giphyService.searchForGiphy(text, currentTotal) { vms in
+            self.viewModels += vms
+            self.isLoading = false
+        }
+    }
+    
+    private func initializeSearch() {
         let searchBar = search.searchBar
         
         if searchBar.text == nil || searchBar.text == "" {
             viewModels = []
         } else {
             NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.fetchGiphys(_:)), object: searchBar)
-            perform(#selector(self.fetchGiphys(_:)), with: searchBar, afterDelay: 0.8)
+            perform(#selector(self.fetchGiphys(_:)), with: searchBar, afterDelay: 0.5)
         }
     }
     
@@ -80,7 +86,6 @@ class MGGiphyListViewController: UIViewController, MGStoryboarded {
         title = "GIFs!"
 
         collectionView.register(MGGiphyCollectionViewCell.self, forCellWithReuseIdentifier: MGGiphyCollectionViewCell.reuseIdentifier)
-
     }
 }
 
@@ -103,7 +108,9 @@ extension MGGiphyListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MGGiphyCollectionViewCell.reuseIdentifier, for: indexPath) as! MGGiphyCollectionViewCell
         
-        cell.viewModel = viewModels[indexPath.row]
+        let vm = viewModels[indexPath.row]
+        
+        cell.viewModel = vm
         return cell
     }
 }
@@ -117,7 +124,29 @@ extension MGGiphyListViewController: UICollectionViewDelegateFlowLayout {
 
 extension MGGiphyListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else { return }
-        triggerSearch()
+        initializeSearch()
+    }
+}
+
+extension MGGiphyListViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentOffset = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let boundsHeight = scrollView.bounds.height
+        
+        guard boundsHeight < contentHeight else {
+            return
+        }
+        
+        let offset = contentOffset - (contentHeight - boundsHeight)
+        
+        if offset > 100 {
+            guard let text = search.searchBar.text else { return }
+            
+            if !isLoading {
+                isLoading = true
+                searchWithOffset(text)
+            }
+        }
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-import SwiftyGif
+import Kingfisher
 
 final class MGGiphyCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = "MGGiphyCollectionViewCell"
@@ -20,7 +20,7 @@ final class MGGiphyCollectionViewCell: UICollectionViewCell {
             }
     
             titleLabel.text = vm.title
-            gifImageView.setGifFromURL(url, levelOfIntegrity: 0.75)
+            gifImageView.kf.setImage(with: url)
         }
     }
     
@@ -48,7 +48,7 @@ final class MGGiphyCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-        gifImageView.currentImage = nil
+        gifImageView.image = nil
     }
     
     // MARK: - Private
