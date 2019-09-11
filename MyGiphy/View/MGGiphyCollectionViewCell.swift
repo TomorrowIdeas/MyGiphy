@@ -47,6 +47,10 @@ final class MGGiphyCollectionViewCell: UICollectionViewCell {
         initialize()
     }
     
+    override func prepareForReuse() {
+        gifImageView.currentImage = nil
+    }
+    
     // MARK: - Private
     
     private func initialize() {

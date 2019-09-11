@@ -13,7 +13,7 @@
         <!--Giphy List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MGGiphyListViewController" customModule="MyGiphy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MGGiphyListViewController" id="BYZ-38-t0r" customClass="MGGiphyListViewController" customModule="MyGiphy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,6 +58,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Giphy Detail View Controller-->
+        <scene sceneID="KU8-d5-Gkw">
+            <objects>
+                <viewController storyboardIdentifier="MGGiphyDetailViewController" id="0Nt-Ra-hD0" customClass="MGGiphyDetailViewController" customModule="MyGiphy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GlT-bc-zPV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="fXU-72-3FN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yox-A3-xfi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="852" y="40"/>
         </scene>
     </scenes>
 </document>

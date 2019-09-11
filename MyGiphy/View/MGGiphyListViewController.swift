@@ -10,8 +10,10 @@ import UIKit
 import GiphyUISDK
 import GiphyCoreSDK
 
-class MGGiphyListViewController: UIViewController {
+class MGGiphyListViewController: UIViewController, MGStoryboarded {
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    weak var coordinator: MainCoordinator?
     
     var viewModels: [MGGiphyCollectionViewCellViewModel] = [] {
         didSet {
@@ -28,28 +30,32 @@ class MGGiphyListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        GPHMediaView
+
         // Do any additional setup after loading the view.
         GiphyCore.configure(apiKey: "GPAA4CpNkEmIakNtPMQAVVUwmEHv7gyT")
-        collectionView.register(MGGiphyCollectionViewCell.self, forCellWithReuseIdentifier: MGGiphyCollectionViewCell.reuseIdentifier)
+        fetchGiphys()
         
+        initialize()
+    }
+    
+    private func fetchGiphys() {
         giphyService.searchForGiphy { vms in
             self.viewModels = vms
         }
-        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        present(GiphyViewController(), animated: true, completion: nil)
-        
+    private func initialize() {
+        title = "Weekly Forecast"
+
+        collectionView.register(MGGiphyCollectionViewCell.self, forCellWithReuseIdentifier: MGGiphyCollectionViewCell.reuseIdentifier)
+
     }
 }
 
 extension MGGiphyListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
+        let vm = viewModels[indexPath.row]
+        coordinator?.showDetailsOfGif(vm: vm)
     }
 }
 
