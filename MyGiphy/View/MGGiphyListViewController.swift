@@ -35,7 +35,11 @@ class MGGiphyListViewController: UIViewController, MGStoryboarded {
 
         // Do any additional setup after loading the view.
         GiphyCore.configure(apiKey: "GPAA4CpNkEmIakNtPMQAVVUwmEHv7gyT")
+        
         initialize()
+        searchWithOffset("corgi")
+        searchBar.text = "corgi"
+        
         hideKeyboardWhenTappedAround()
     }
     

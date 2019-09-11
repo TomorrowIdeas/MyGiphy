@@ -74,9 +74,10 @@ final class MGGiphyDetailViewController: UIViewController, MGStoryboarded {
         }
         
         tableView.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalToSuperview()
+            make.left.right.equalToSuperview()
             make.top.equalTo(detailView.snp.bottom)
             make.height.equalTo((Constants.Screen.height * (1/3)))
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin)
         }
     }
 }
