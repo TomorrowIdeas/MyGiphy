@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class MGGiphyDetailViewController: UIViewController, MGStoryboarded {
     weak var coordinator: DetailCoordinator?
@@ -16,16 +17,29 @@ final class MGGiphyDetailViewController: UIViewController, MGStoryboarded {
             guard let vm = viewModel else {
                 return
             }
-            print(vm)
+            
+            detailView.viewModel = vm
         }
     }
+    
+    private var detailView: MGGiphyDetailView = {
+        let view = MGGiphyDetailView()
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initialize()
     }
     
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//        coordinator?.didFinishBuying()
-//    }
+    private func initialize() {
+        title = "Details"
+
+        self.view.addSubview(detailView)
+        
+        detailView.snp.makeConstraints { (make) in
+            make.left.right.top.bottom.equalToSuperview()
+        }
+    }
 }
