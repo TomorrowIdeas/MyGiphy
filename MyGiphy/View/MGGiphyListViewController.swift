@@ -14,6 +14,7 @@ class MGGiphyListViewController: UIViewController, MGStoryboarded {
     @IBOutlet weak var collectionView: UICollectionView!
     
     weak var coordinator: MainCoordinator?
+    lazy var search = UISearchController(searchResultsController: nil)
     
     var viewModels: [MGGiphyCollectionViewCellViewModel] = [] {
         didSet {
@@ -33,19 +34,50 @@ class MGGiphyListViewController: UIViewController, MGStoryboarded {
 
         // Do any additional setup after loading the view.
         GiphyCore.configure(apiKey: "GPAA4CpNkEmIakNtPMQAVVUwmEHv7gyT")
-        fetchGiphys()
-        
         initialize()
     }
     
-    private func fetchGiphys() {
-        giphyService.searchForGiphy { vms in
-            self.viewModels = vms
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.hidesSearchBarWhenScrolling = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationItem.hidesSearchBarWhenScrolling = true
+    }
+    
+    @objc private func fetchGiphys(_ searchBar: UISearchBar) {
+        if let text = searchBar.text {
+            print(text)
+            giphyService.searchForGiphy(text) { vms in
+                self.viewModels = vms
+            }
+        }
+        
+    }
+    
+    private func triggerSearch() {
+        let searchBar = search.searchBar
+        
+        if searchBar.text == nil || searchBar.text == "" {
+            viewModels = []
+        } else {
+            NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.fetchGiphys(_:)), object: searchBar)
+            perform(#selector(self.fetchGiphys(_:)), with: searchBar, afterDelay: 0.8)
         }
     }
     
     private func initialize() {
-        title = "Weekly Forecast"
+        search.searchResultsUpdater = self
+        search.searchBar.placeholder = "Search"
+        
+        search.obscuresBackgroundDuringPresentation = false
+        search.hidesNavigationBarDuringPresentation = false
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
+        navigationItem.searchController = search
+        definesPresentationContext = true
+        
+        title = "GIFs!"
 
         collectionView.register(MGGiphyCollectionViewCell.self, forCellWithReuseIdentifier: MGGiphyCollectionViewCell.reuseIdentifier)
 
@@ -80,5 +112,12 @@ extension MGGiphyListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: 100, height: 100)
+    }
+}
+
+extension MGGiphyListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        triggerSearch()
     }
 }
