@@ -79,7 +79,7 @@ final class MGGiphyDetailView: UIView {
         view.layer.cornerRadius = 15
         view.text = "Write a comment..."
         view.textColor = UIColor.lightGray
-        view.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
+        view.contentInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
         view.font = view.font?.withSize(14)
         return view
     }()
@@ -116,10 +116,8 @@ final class MGGiphyDetailView: UIView {
         }
         
         gifImageView.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
             make.top.equalTo(giphyTitle.snp.bottom).offset(10)
             make.width.equalTo(Constants.Screen.width)
-            make.height.equalTo(280)
         }
         
         giphyTitle.snp.makeConstraints { (make) in
@@ -133,11 +131,12 @@ final class MGGiphyDetailView: UIView {
             make.top.equalTo(gifImageView.snp.bottom).offset(10)
             make.left.equalTo(avatarPicture.snp.left)
             make.height.equalTo(30)
+            make.bottom.equalToSuperview().offset(-10)
         }
         
         commentBox.snp.makeConstraints { (make) in
             make.bottom.equalTo(commentLabel.snp.bottom)
-            make.left.equalTo(commentLabel.snp.right).offset(20)
+            make.left.equalTo(commentLabel.snp.right).offset(10)
             make.right.equalToSuperview().offset(-20)
             make.height.equalTo(30)
         }

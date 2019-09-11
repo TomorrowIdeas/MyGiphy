@@ -24,7 +24,19 @@ final class MGGiphyDetailViewController: UIViewController, MGStoryboarded {
     
     private var detailView: MGGiphyDetailView = {
         let view = MGGiphyDetailView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+    
+    private lazy var tableView: UITableView = {
+        let table = UITableView()
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.backgroundColor = .clear
+        table.register(MGGiphyCommentCell.self, forCellReuseIdentifier: MGGiphyCommentCell.reuseIdentifier)
+        table.tableFooterView = UIView()
+        table.delegate = self
+        table.dataSource = self
+        return table
     }()
     
     override func viewDidLoad() {
@@ -52,12 +64,46 @@ final class MGGiphyDetailViewController: UIViewController, MGStoryboarded {
     private func initialize() {
         title = "Details"
         detailView.commentBox.delegate = self
-        self.view.addSubview(detailView)
         
+        self.view.addSubview(detailView)
+        self.view.addSubview(tableView)
         
         detailView.snp.makeConstraints { (make) in
-            make.left.right.top.bottom.equalToSuperview()
+            make.left.right.top.equalToSuperview()
+            make.height.equalTo((Constants.Screen.height * (2/3)))
         }
+        
+        tableView.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalToSuperview()
+            make.top.equalTo(detailView.snp.bottom)
+            make.height.equalTo((Constants.Screen.height * (1/3)))
+        }
+    }
+}
+
+extension MGGiphyDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 30
+    }
+}
+
+extension MGGiphyDetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: MGGiphyCommentCell.reuseIdentifier, for: indexPath) as! MGGiphyCommentCell
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
 }
 
