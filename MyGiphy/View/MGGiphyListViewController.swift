@@ -14,7 +14,7 @@ class MGGiphyListViewController: UIViewController, MGStoryboarded {
     @IBOutlet weak var collectionView: UICollectionView!
     
     weak var coordinator: MainCoordinator?
-    lazy var search = UISearchController(searchResultsController: nil)
+    lazy var searchBar = UISearchBar(frame: .zero)
     private var isLoading: Bool = false
     
     var viewModels: [MGGiphyCollectionViewCellViewModel] = [] {
@@ -39,17 +39,13 @@ class MGGiphyListViewController: UIViewController, MGStoryboarded {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         navigationItem.hidesSearchBarWhenScrolling = true
-    }
-    
-    @objc private func fetchGiphys(_ searchBar: UISearchBar) {
-        if let text = searchBar.text {
-            searchWithOffset(text)
-        }
     }
     
     func searchWithOffset(_ text: String) {
@@ -61,30 +57,30 @@ class MGGiphyListViewController: UIViewController, MGStoryboarded {
         }
     }
     
+    @objc private func fetchGiphys(_ searchBar: UISearchBar) {
+        if let text = searchBar.text {
+            searchWithOffset(text)
+        }
+    }
+    
     private func initializeSearch() {
-        let searchBar = search.searchBar
-        
         if searchBar.text == nil || searchBar.text == "" {
             viewModels = []
         } else {
             NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.fetchGiphys(_:)), object: searchBar)
-            perform(#selector(self.fetchGiphys(_:)), with: searchBar, afterDelay: 0.5)
+            perform(#selector(self.fetchGiphys(_:)), with: searchBar, afterDelay: 0.8)
         }
     }
     
     private func initialize() {
-        search.searchResultsUpdater = self
-        search.searchBar.placeholder = "Search"
+        searchBar.delegate = self
+        searchBar.placeholder = "Search for GIFs!"
         
-        search.obscuresBackgroundDuringPresentation = false
-        search.hidesNavigationBarDuringPresentation = false
         navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.titleView = searchBar
         
-        navigationItem.searchController = search
         definesPresentationContext = true
         
-        title = "GIFs!"
-
         collectionView.register(MGGiphyCollectionViewCell.self, forCellWithReuseIdentifier: MGGiphyCollectionViewCell.reuseIdentifier)
     }
 }
@@ -92,6 +88,11 @@ class MGGiphyListViewController: UIViewController, MGStoryboarded {
 extension MGGiphyListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vm = viewModels[indexPath.row]
+        
+        if searchBar.isFirstResponder {
+            searchBar.resignFirstResponder()
+        }
+        
         coordinator?.showDetailsOfGif(vm: vm)
     }
 }
@@ -118,12 +119,23 @@ extension MGGiphyListViewController: UICollectionViewDataSource {
 extension MGGiphyListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 100, height: 100)
+        let cellsPerRow = 3
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        
+        let space = layout.sectionInset.left + layout.sectionInset.right + (layout.minimumInteritemSpacing * CGFloat(cellsPerRow - 1))
+        
+        let size = Int((collectionView.bounds.width - space) / CGFloat(cellsPerRow))
+        return CGSize(width: size, height: 100)
     }
 }
 
-extension MGGiphyListViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
+extension MGGiphyListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModels = []
+        initializeSearch()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         initializeSearch()
     }
 }
@@ -141,7 +153,7 @@ extension MGGiphyListViewController: UIScrollViewDelegate {
         let offset = contentOffset - (contentHeight - boundsHeight)
         
         if offset > 100 {
-            guard let text = search.searchBar.text else { return }
+            guard let text = searchBar.text else { return }
             
             if !isLoading {
                 isLoading = true

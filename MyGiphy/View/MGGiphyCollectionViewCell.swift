@@ -26,7 +26,9 @@ final class MGGiphyCollectionViewCell: UICollectionViewCell {
     
     private let gifImageView: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleAspectFit
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
         return view
     }()
     
@@ -59,6 +61,7 @@ final class MGGiphyCollectionViewCell: UICollectionViewCell {
         gifImageView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
+            make.width.equalToSuperview()
 //            make.height.equalTo(20)
         }
         
