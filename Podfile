@@ -9,4 +9,5 @@ target 'MyGiphy' do
   pod 'Giphy'
   pod 'SnapKit'
   pod 'Kingfisher'
+  pod 'IQKeyboardManager'
 end

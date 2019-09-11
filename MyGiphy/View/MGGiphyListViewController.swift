@@ -36,6 +36,17 @@ class MGGiphyListViewController: UIViewController, MGStoryboarded {
         // Do any additional setup after loading the view.
         GiphyCore.configure(apiKey: "GPAA4CpNkEmIakNtPMQAVVUwmEHv7gyT")
         initialize()
+        hideKeyboardWhenTappedAround()
+    }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        self.searchBar.resignFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -137,11 +148,14 @@ extension MGGiphyListViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         initializeSearch()
+        
+        searchBar.resignFirstResponder()
     }
 }
 
 extension MGGiphyListViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchBar.resignFirstResponder()
         let contentOffset = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         let boundsHeight = scrollView.bounds.height

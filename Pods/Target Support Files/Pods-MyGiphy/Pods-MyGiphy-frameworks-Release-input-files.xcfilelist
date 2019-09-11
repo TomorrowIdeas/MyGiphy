@@ -1,6 +1,7 @@
 ${PODS_ROOT}/Target Support Files/Pods-MyGiphy/Pods-MyGiphy-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/DeepDiff/DeepDiff.framework
 ${PODS_ROOT}/Giphy/GiphySDK/GiphyUISDK.framework
+${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
 ${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework

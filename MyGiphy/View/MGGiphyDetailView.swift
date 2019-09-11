@@ -38,7 +38,7 @@ final class MGGiphyDetailView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = label.font.withSize(12)
+        label.font = label.font.withSize(14)
         return label
     }()
     
@@ -63,6 +63,27 @@ final class MGGiphyDetailView: UIView {
         return view
     }()
     
+    private let commentLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Comments:"
+        label.font = label.font.withSize(14)
+        return label
+    }()
+    
+    let commentBox: UITextView = {
+        let view = UITextView()
+        view.backgroundColor = .white
+        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderWidth = 1.0
+        view.layer.cornerRadius = 15
+        view.text = "Write a comment..."
+        view.textColor = UIColor.lightGray
+        view.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
+        view.font = view.font?.withSize(14)
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
@@ -72,15 +93,17 @@ final class MGGiphyDetailView: UIView {
         super.init(coder: aDecoder)
         initialize()
     }
-    
+
     private func initialize() {
         self.addSubview(gifImageView)
         self.addSubview(usernameLabel)
         self.addSubview(giphyTitle)
         self.addSubview(avatarPicture)
-        
+        self.addSubview(commentLabel)
+        self.addSubview(commentBox)
+
         avatarPicture.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(90)
+            make.top.equalToSuperview().offset(100)
             make.left.equalToSuperview().offset(20)
             make.width.height.equalTo(30)
         }
@@ -94,9 +117,9 @@ final class MGGiphyDetailView: UIView {
         
         gifImageView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalTo(giphyTitle.snp.bottom).offset(15)
+            make.top.equalTo(giphyTitle.snp.bottom).offset(10)
             make.width.equalTo(Constants.Screen.width)
-            make.height.equalTo(300)
+            make.height.equalTo(280)
         }
         
         giphyTitle.snp.makeConstraints { (make) in
@@ -104,6 +127,19 @@ final class MGGiphyDetailView: UIView {
             make.height.equalTo(40)
             make.left.equalTo(avatarPicture.snp.left)
             make.right.equalToSuperview().offset(-20)
+        }
+        
+        commentLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(gifImageView.snp.bottom).offset(10)
+            make.left.equalTo(avatarPicture.snp.left)
+            make.height.equalTo(30)
+        }
+        
+        commentBox.snp.makeConstraints { (make) in
+            make.bottom.equalTo(commentLabel.snp.bottom)
+            make.left.equalTo(commentLabel.snp.right).offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.height.equalTo(30)
         }
     }
 }

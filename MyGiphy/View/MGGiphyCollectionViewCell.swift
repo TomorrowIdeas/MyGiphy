@@ -13,7 +13,7 @@ import Kingfisher
 final class MGGiphyCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = "MGGiphyCollectionViewCell"
     
-    var viewModel: MGGiphyPresentable? {
+    var viewModel: MGGiphyCollectionViewCellViewModel? {
         didSet {
             guard let vm = viewModel, let url = vm.url else {
                 return
@@ -60,15 +60,7 @@ final class MGGiphyCollectionViewCell: UICollectionViewCell {
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
             make.width.equalToSuperview()
-//            make.height.equalTo(20)
         }
-        
-//        titleLabel.snp.makeConstraints { (make) in
-//            make.centerX.equalToSuperview()
-//            make.width.equalTo(50)
-//            make.centerY.equalToSuperview()
-//            make.height.equalTo(20)
-//        }
     }
 }
 
