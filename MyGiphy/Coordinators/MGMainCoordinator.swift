@@ -1,5 +1,5 @@
 //
-//  MainCoordinator.swift
+//  MGMainCoordinator.swift
 //  MyGiphy
 //
 //  Created by Chris Chueh on 9/10/19.
@@ -7,9 +7,10 @@
 //
 
 import UIKit
-import GiphyCoreSDK
- 
-class MainCoordinator: NSObject, MGCoordinator {
+
+// MARK: - MGMainCoordinator
+
+class MGMainCoordinator: NSObject, MGCoordinator {
     var childCoordinators: [MGCoordinator] = []
     var navigationController: UINavigationController
     
@@ -25,7 +26,7 @@ class MainCoordinator: NSObject, MGCoordinator {
     }
     
     func showDetailsOfGif(vm: MGGiphyCollectionViewCellViewModel) {
-        let child = DetailCoordinator(nav: navigationController, viewModel: vm)
+        let child = MGDetailCoordinator(nav: navigationController, viewModel: vm)
         child.parentCoordinator = self
         childCoordinators.append(child)
         child.start()
@@ -36,7 +37,7 @@ class MainCoordinator: NSObject, MGCoordinator {
     }
 }
 
-extension MainCoordinator: UINavigationControllerDelegate {
+extension MGMainCoordinator: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         
         guard let fromVC = navigationController.transitionCoordinator?.viewController(forKey: .from) else {

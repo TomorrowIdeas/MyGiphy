@@ -10,6 +10,8 @@ import UIKit
 import Kingfisher
 import SnapKit
 
+// MARK: - MGGiphyDetailView
+
 final class MGGiphyDetailView: UIView {
     var viewModel: MGGiphyCollectionViewCellViewModel? {
         didSet {
@@ -17,20 +19,22 @@ final class MGGiphyDetailView: UIView {
                 return
             }
             
+            // Set the title of the GIF
             giphyTitle.text = vm.title
             
-            (gifImageView.kf.indicator?.view as? UIActivityIndicatorView)?.color = UIColor.black
-            gifImageView.kf.indicatorType = .activity
-            gifImageView.kf.setImage(with: url)
+            // Display the owner's username for the GIF
+            let noUsernameForGiphy = "Who made this?"
+            usernameLabel.attributedText = vm.username != nil ? vm.username : noUsernameForGiphy.createBoldString()
             
+            // Display the owner's avatar
             if let avatar = vm.avatar, let avatarUrl = URL(string: avatar) {
                 avatarPicture.kf.setImage(with: avatarUrl)
             } else {
                 avatarPicture.image = UIImage(named: "user36")
             }
             
-            let noUsernameForGiphy = "Who made this?"
-            usernameLabel.attributedText = vm.username != nil ? vm.username : noUsernameForGiphy.createBoldString()
+            // Set the image using Kingfisher
+            setupGiphyGifWithCache(url: url)
         }
     }
     
@@ -93,6 +97,17 @@ final class MGGiphyDetailView: UIView {
         super.init(coder: aDecoder)
         initialize()
     }
+    
+    private func setupGiphyGifWithCache(url: URL) {
+        
+        // Display activity indicator. When complete, load image with fade-in animation.
+        gifImageView.kf.indicatorType = .activity
+        gifImageView.kf.setImage(
+            with: url,
+            options: [
+                .transition(.fade(1)),
+            ])
+    }
 
     private func initialize() {
         self.addSubview(gifImageView)
@@ -103,7 +118,7 @@ final class MGGiphyDetailView: UIView {
         self.addSubview(commentBox)
 
         avatarPicture.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(100)
+            make.top.equalTo(self.safeAreaLayoutGuide.snp.topMargin).offset(20)
             make.left.equalToSuperview().offset(20)
             make.width.height.equalTo(30)
         }
@@ -121,7 +136,7 @@ final class MGGiphyDetailView: UIView {
         }
         
         giphyTitle.snp.makeConstraints { (make) in
-            make.top.equalTo(usernameLabel.snp.bottom).offset(10)
+            make.top.equalTo(usernameLabel.snp.bottom)
             make.height.equalTo(40)
             make.left.equalTo(avatarPicture.snp.left)
             make.right.equalToSuperview().offset(-20)

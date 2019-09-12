@@ -1,5 +1,5 @@
 //
-//  DetailCoordinator.swift
+//  MGDetailCoordinator.swift
 //  MyGiphy
 //
 //  Created by Chris Chueh on 9/10/19.
@@ -8,8 +8,10 @@
 
 import UIKit
 
-class DetailCoordinator: MGCoordinator {
-    weak var parentCoordinator: MainCoordinator?
+// MARK: - MGDetailCoordinator
+
+class MGDetailCoordinator: MGCoordinator {
+    weak var parentCoordinator: MGMainCoordinator?
     var viewModel: MGGiphyCollectionViewCellViewModel?
     var childCoordinators: [MGCoordinator] = []
     var navigationController: UINavigationController

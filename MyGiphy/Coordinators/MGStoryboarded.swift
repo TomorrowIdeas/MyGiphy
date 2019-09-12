@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: - MGStoryboarded
+
 protocol MGStoryboarded {
     static func instantiate() -> Self
 }

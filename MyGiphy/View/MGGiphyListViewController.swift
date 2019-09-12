@@ -8,13 +8,16 @@
 
 import UIKit
 
+// MARK: - MGGiphyListViewController
+
 class MGGiphyListViewController: UIViewController, MGStoryboarded {
     @IBOutlet weak var collectionView: UICollectionView!
     
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: MGMainCoordinator?
     lazy var searchBar = UISearchBar(frame: .zero)
     private var isLoading: Bool = false
     
+    // Inject the view models
     var viewModels: [MGGiphyCollectionViewCellViewModel] = [] {
         didSet {
             DispatchQueue.main.async { [weak self] in
@@ -119,7 +122,7 @@ extension MGGiphyListViewController: UICollectionViewDataSource {
 extension MGGiphyListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let size = collectionView.calculateSizeForCollectionViewItem()
+        let size = collectionView.calculateSizeForCollectionViewItem(cellsPerRow: 3)
         
         return size
     }

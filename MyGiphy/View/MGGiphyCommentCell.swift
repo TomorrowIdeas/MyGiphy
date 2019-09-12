@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: - MGGiphyCommentCell
+
 final class MGGiphyCommentCell: UITableViewCell {
     static let reuseIdentifier = "MGGiphyCommentCell"
     

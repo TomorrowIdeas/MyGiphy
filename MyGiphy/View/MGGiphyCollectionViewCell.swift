@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 import Kingfisher
 
+// MARK: - MGGiphyCollectionViewCell
+
 final class MGGiphyCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = "MGGiphyCollectionViewCell"
     
@@ -20,6 +22,8 @@ final class MGGiphyCollectionViewCell: UICollectionViewCell {
             }
     
             titleLabel.text = vm.title
+            
+            // Uses Kingfisher to cache the image
             gifImageView.kf.setImage(with: url)
         }
     }

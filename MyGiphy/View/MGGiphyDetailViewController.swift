@@ -9,9 +9,12 @@
 import UIKit
 import SnapKit
 
+// MARK: - MGGiphyDetailViewController
+
 final class MGGiphyDetailViewController: UIViewController, MGStoryboarded {
-    weak var coordinator: DetailCoordinator?
+    weak var coordinator: MGDetailCoordinator?
     
+    // List of comments for the Giphy GIF. Scrolls to last row when comment is added.
     private var comments: [String] = [] {
         didSet {
             DispatchQueue.main.async { [weak self] in
@@ -26,6 +29,7 @@ final class MGGiphyDetailViewController: UIViewController, MGStoryboarded {
     
     private var isCommenting: Bool = false
     
+    // Inject the view model
     var viewModel: MGGiphyCollectionViewCellViewModel? {
         didSet {
             guard let vm = viewModel else {
@@ -60,6 +64,7 @@ final class MGGiphyDetailViewController: UIViewController, MGStoryboarded {
         hideKeyboardWhenTappedAround()
     }
     
+    // Adds a tap gesture when tapped outside of the keyboard
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -70,6 +75,7 @@ final class MGGiphyDetailViewController: UIViewController, MGStoryboarded {
         self.view.endEditing(true)
     }
     
+    // Insert placeholder if user is not commenting
     private func resetTextViewPlaceHolder() {
         isCommenting = false
         detailView.commentBox.text = "Write a comment..."
@@ -80,12 +86,13 @@ final class MGGiphyDetailViewController: UIViewController, MGStoryboarded {
         title = "Details"
         detailView.commentBox.delegate = self
         
+        // Dynamic sizing of table view cells based on comment size
         tableView.estimatedRowHeight = 40
         tableView.rowHeight = UITableView.automaticDimension
         
         self.view.addSubview(detailView)
         self.view.addSubview(tableView)
-        
+
         detailView.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
         }
@@ -99,11 +106,15 @@ final class MGGiphyDetailViewController: UIViewController, MGStoryboarded {
     }
 }
 
+// MARK: - UITableViewDelegate
+
 extension MGGiphyDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
+
+// MARK: - UITableViewDataSource
 
 extension MGGiphyDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -122,6 +133,8 @@ extension MGGiphyDetailViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITextViewDelegate
+
 extension MGGiphyDetailViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         
@@ -138,10 +151,9 @@ extension MGGiphyDetailViewController: UITextViewDelegate {
         }
     }
     
-    
-    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
+        // If the return button is pressed, add the comment to the table and reset text view
         if text == "\n" {
             if textView.text != "" {
                 comments.append(textView.text)

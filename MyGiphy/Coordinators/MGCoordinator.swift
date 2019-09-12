@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: - MGCoordinator
+
 protocol MGCoordinator: AnyObject {
     var childCoordinators: [MGCoordinator] { get set }
     var navigationController: UINavigationController { get set }

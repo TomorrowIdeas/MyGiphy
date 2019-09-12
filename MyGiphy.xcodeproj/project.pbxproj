@@ -18,9 +18,9 @@
 		FCBCFE1D232794E300FF5CBE /* MGGiphySerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE1C232794E300FF5CBE /* MGGiphySerialization.swift */; };
 		FCBCFE212328551C00FF5CBE /* MGCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE202328551C00FF5CBE /* MGCoordinator.swift */; };
 		FCBCFE23232855B200FF5CBE /* MGStoryboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE22232855B200FF5CBE /* MGStoryboarded.swift */; };
-		FCBCFE252328564B00FF5CBE /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE242328564B00FF5CBE /* MainCoordinator.swift */; };
+		FCBCFE252328564B00FF5CBE /* MGMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE242328564B00FF5CBE /* MGMainCoordinator.swift */; };
 		FCBCFE2923285F4400FF5CBE /* MGGiphyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE2823285F4400FF5CBE /* MGGiphyDetailViewController.swift */; };
-		FCBCFE2B232861CB00FF5CBE /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE2A232861CB00FF5CBE /* DetailCoordinator.swift */; };
+		FCBCFE2B232861CB00FF5CBE /* MGDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE2A232861CB00FF5CBE /* MGDetailCoordinator.swift */; };
 		FCBCFE2D2328BC7F00FF5CBE /* MGGiphyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE2C2328BC7F00FF5CBE /* MGGiphyDetailView.swift */; };
 		FCBCFE2F2328C13600FF5CBE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE2E2328C13600FF5CBE /* Constants.swift */; };
 		FCBCFE332328C7D800FF5CBE /* MG+Bold.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE322328C7D800FF5CBE /* MG+Bold.swift */; };
@@ -44,9 +44,9 @@
 		FCBCFE1C232794E300FF5CBE /* MGGiphySerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGGiphySerialization.swift; sourceTree = "<group>"; };
 		FCBCFE202328551C00FF5CBE /* MGCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGCoordinator.swift; sourceTree = "<group>"; };
 		FCBCFE22232855B200FF5CBE /* MGStoryboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGStoryboarded.swift; sourceTree = "<group>"; };
-		FCBCFE242328564B00FF5CBE /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		FCBCFE242328564B00FF5CBE /* MGMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGMainCoordinator.swift; sourceTree = "<group>"; };
 		FCBCFE2823285F4400FF5CBE /* MGGiphyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGGiphyDetailViewController.swift; sourceTree = "<group>"; };
-		FCBCFE2A232861CB00FF5CBE /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
+		FCBCFE2A232861CB00FF5CBE /* MGDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGDetailCoordinator.swift; sourceTree = "<group>"; };
 		FCBCFE2C2328BC7F00FF5CBE /* MGGiphyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGGiphyDetailView.swift; sourceTree = "<group>"; };
 		FCBCFE2E2328C13600FF5CBE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FCBCFE322328C7D800FF5CBE /* MG+Bold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MG+Bold.swift"; sourceTree = "<group>"; };
@@ -152,8 +152,8 @@
 			children = (
 				FCBCFE202328551C00FF5CBE /* MGCoordinator.swift */,
 				FCBCFE22232855B200FF5CBE /* MGStoryboarded.swift */,
-				FCBCFE242328564B00FF5CBE /* MainCoordinator.swift */,
-				FCBCFE2A232861CB00FF5CBE /* DetailCoordinator.swift */,
+				FCBCFE242328564B00FF5CBE /* MGMainCoordinator.swift */,
+				FCBCFE2A232861CB00FF5CBE /* MGDetailCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -293,12 +293,12 @@
 				D67896EF23074E860059BA75 /* MGGiphyListViewController.swift in Sources */,
 				FCBCFE13232773BE00FF5CBE /* MGGiphyCollectionViewCell.swift in Sources */,
 				D67896ED23074E860059BA75 /* AppDelegate.swift in Sources */,
-				FCBCFE2B232861CB00FF5CBE /* DetailCoordinator.swift in Sources */,
+				FCBCFE2B232861CB00FF5CBE /* MGDetailCoordinator.swift in Sources */,
 				FCBCFE152327749300FF5CBE /* MGGiphyCollectionViewCellViewModel.swift in Sources */,
 				FCBCFE1D232794E300FF5CBE /* MGGiphySerialization.swift in Sources */,
 				FCBCFE3B232A02DE00FF5CBE /* MG+CollectionView.swift in Sources */,
 				FCBCFE23232855B200FF5CBE /* MGStoryboarded.swift in Sources */,
-				FCBCFE252328564B00FF5CBE /* MainCoordinator.swift in Sources */,
+				FCBCFE252328564B00FF5CBE /* MGMainCoordinator.swift in Sources */,
 				FCBCFE212328551C00FF5CBE /* MGCoordinator.swift in Sources */,
 				FCBCFE2923285F4400FF5CBE /* MGGiphyDetailViewController.swift in Sources */,
 				FCBCFE2D2328BC7F00FF5CBE /* MGGiphyDetailView.swift in Sources */,

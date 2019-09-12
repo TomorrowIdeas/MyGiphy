@@ -11,18 +11,21 @@ import IQKeyboardManager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var coordinator: MainCoordinator?
+    var coordinator: MGMainCoordinator?
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
+        // Handles keyboard shift for UITextField and UITextView
         IQKeyboardManager.shared().isEnabled = true
+        
+        // Distance to offset from keyboard
         IQKeyboardManager.shared().keyboardDistanceFromTextField = 10
         
+        // Handle launching our main coordinator
         let nav = UINavigationController()
-        coordinator = MainCoordinator(nav: nav)
+        coordinator = MGMainCoordinator(nav: nav)
         coordinator?.start()
         
         window = UIWindow(frame: Constants.Screen.size)

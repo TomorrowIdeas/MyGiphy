@@ -6,8 +6,9 @@
 //  Copyright © 2019 Tomorrow Ideas. All rights reserved.
 //
 
-import UIKit
 import GiphyCoreSDK
+
+// MARK: - MGGiphyPresentable
 
 protocol MGGiphyPresentable {
     var type: GPHMediaType { get }
@@ -18,6 +19,8 @@ protocol MGGiphyPresentable {
     var avatar: String? { get }
     var higherQualityUrl: URL? { get }
 }
+
+// MARK: - MGGiphyCollectionViewCellViewModel
 
 struct MGGiphyCollectionViewCellViewModel: MGGiphyPresentable {
     private let myGiphy: GPHMedia
@@ -48,6 +51,7 @@ struct MGGiphyCollectionViewCellViewModel: MGGiphyPresentable {
         return str?.createBoldString()
     }
     
+    // Fetches the 100px fixed height image designed for mobile app scrolling
     var url: URL? {
         if let images = myGiphy.images, let size = images.fixedHeightSmall, let gifURL = size.gifUrl {
             let url = URL(string: gifURL)
@@ -58,6 +62,7 @@ struct MGGiphyCollectionViewCellViewModel: MGGiphyPresentable {
         return URL(string: "")
     }
     
+    // File size under 5mb. Display a higher quality image to the user when selected.
     var higherQualityUrl: URL? {
         if let images = myGiphy.images, let size = images.downsizedMedium, let gifURL = size.gifUrl {
             let url = URL(string: gifURL)
