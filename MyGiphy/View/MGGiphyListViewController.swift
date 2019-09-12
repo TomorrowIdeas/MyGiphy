@@ -145,7 +145,9 @@ extension MGGiphyListViewController: UISearchBarDelegate {
     
     // If the user presses search on the keyboard
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        initializeSearch()
+        if viewModels.count == 0 {
+            initializeSearch()
+        }
         
         searchBar.resignFirstResponder()
     }
