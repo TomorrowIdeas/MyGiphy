@@ -14,12 +14,14 @@ class MGGiphyListViewController: UIViewController, MGStoryboarded {
     @IBOutlet weak var collectionView: UICollectionView!
     
     weak var coordinator: MGMainCoordinator?
+    
     lazy var searchBar = UISearchBar(frame: .zero)
     private var isLoading: Bool = false
     
     // Inject the view models
     var viewModels: [MGGiphyCollectionViewCellViewModel] = [] {
         didSet {
+            // Property observer for reloading collection view
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
                 strongSelf.collectionView.reloadData()
@@ -35,12 +37,15 @@ class MGGiphyListViewController: UIViewController, MGStoryboarded {
         super.viewDidLoad()
         
         initialize()
-        searchWithOffset("corgi")
+        
+        // Default search value
         searchBar.text = "corgi"
+        fetchGiphys()
         
         hideKeyboardWhenTappedAround()
     }
     
+    // Dismiss when tapped outside keyboard and end searching
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -51,8 +56,10 @@ class MGGiphyListViewController: UIViewController, MGStoryboarded {
         self.searchBar.resignFirstResponder()
     }
     
-    func searchWithOffset(_ text: String) {
+    // Fetch a list of GIFs and account for offset if using infinite scroll
+    @objc private func fetchGiphys() {
         let currentTotal = viewModels.count
+        let text = searchBar.text ?? ""
         
         giphyService.searchForGiphy(text, currentTotal) { vms in
             self.viewModels += vms
@@ -60,30 +67,27 @@ class MGGiphyListViewController: UIViewController, MGStoryboarded {
         }
     }
     
-    @objc private func fetchGiphys(_ searchBar: UISearchBar) {
-        if let text = searchBar.text {
-            searchWithOffset(text)
-        }
-    }
-    
     private func initializeSearch() {
+        // Empty collection view if the search bar has no text
         if searchBar.text == nil || searchBar.text == "" {
             viewModels = []
         } else {
-            NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.fetchGiphys(_:)), object: searchBar)
-            perform(#selector(self.fetchGiphys(_:)), with: searchBar, afterDelay: 0.8)
+            // Cancel previous requests and throttle as you type
+            NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.fetchGiphys), object: searchBar)
+            perform(#selector(self.fetchGiphys), with: searchBar, afterDelay: 0.8)
         }
     }
-    
+
     private func initialize() {
         searchBar.delegate = self
         searchBar.placeholder = "Search for GIFs!"
-        
+
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.titleView = searchBar
         
         definesPresentationContext = true
         
+        // Register cell for reuse
         collectionView.register(MGGiphyCollectionViewCell.self, forCellWithReuseIdentifier: MGGiphyCollectionViewCell.reuseIdentifier)
     }
 }
@@ -92,10 +96,12 @@ extension MGGiphyListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vm = viewModels[indexPath.row]
         
+        // Stops search when moving to the next screen
         if searchBar.isFirstResponder {
             searchBar.resignFirstResponder()
         }
         
+        // Pass the view model to the coordinator
         coordinator?.showDetailsOfGif(vm: vm)
     }
 }
@@ -114,6 +120,7 @@ extension MGGiphyListViewController: UICollectionViewDataSource {
         
         let vm = viewModels[indexPath.row]
         
+        // Passes the view model forward
         cell.viewModel = vm
         return cell
     }
@@ -122,6 +129,7 @@ extension MGGiphyListViewController: UICollectionViewDataSource {
 extension MGGiphyListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
+        // Determine size for each collection cell
         let size = collectionView.calculateSizeForCollectionViewItem(cellsPerRow: 3)
         
         return size
@@ -129,11 +137,13 @@ extension MGGiphyListViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension MGGiphyListViewController: UISearchBarDelegate {
+    // If search text is changing, empty the collection view
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModels = []
         initializeSearch()
     }
     
+    // If the user presses search on the keyboard
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         initializeSearch()
         
@@ -142,6 +152,8 @@ extension MGGiphyListViewController: UISearchBarDelegate {
 }
 
 extension MGGiphyListViewController: UIScrollViewDelegate {
+    
+    // Loads more GIFs and allows infinite scrolling for the user
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
         let contentOffset = scrollView.contentOffset.y
@@ -152,14 +164,13 @@ extension MGGiphyListViewController: UIScrollViewDelegate {
             return
         }
         
+        // Offset is how far you scroll past the contents of the collection view
         let offset = contentOffset - (contentHeight - boundsHeight)
         
         if offset > 100 {
-            guard let text = searchBar.text else { return }
-            
             if !isLoading {
                 isLoading = true
-                searchWithOffset(text)
+                fetchGiphys()
             }
         }
     }

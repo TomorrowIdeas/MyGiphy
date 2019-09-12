@@ -10,7 +10,7 @@ import UIKit
 
 extension UICollectionView {
     
-    // Calculates the size of the cell based on number of cells in a row (2-4 looks best)
+    // Calculates the size of the cell based on specified number of cells in a row (1-3 looks best)
     func calculateSizeForCollectionViewItem(cellsPerRow: Int) -> CGSize {
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
         

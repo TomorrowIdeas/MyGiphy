@@ -15,7 +15,7 @@ final class MGGiphySerialization {
     func searchForGiphy(_ text: String, _ currentTotal: Int, completion: @escaping (([MGGiphyCollectionViewCellViewModel]) -> Void)) {
         
         // Configure our API key
-        GiphyCore.configure(apiKey: "GPAA4CpNkEmIakNtPMQAVVUwmEHv7gyT")
+        GiphyCore.configure(apiKey: "BILpI86hmpKxMlmLZ1w8gpWDsmnGi9Y5")
         
         var viewModels: [MGGiphyCollectionViewCellViewModel] = []
         

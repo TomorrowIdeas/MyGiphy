@@ -14,17 +14,14 @@ import Kingfisher
 
 final class MGGiphyCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = "MGGiphyCollectionViewCell"
-    
-    var viewModel: MGGiphyCollectionViewCellViewModel? {
+
+    var viewModel: GiphyPresentable? {
         didSet {
-            guard let vm = viewModel, let url = vm.url else {
+            guard let vm = viewModel else {
                 return
             }
-    
-            titleLabel.text = vm.title
             
-            // Uses Kingfisher to cache the image
-            gifImageView.kf.setImage(with: url)
+            configure(with: vm)
         }
     }
     
@@ -53,6 +50,13 @@ final class MGGiphyCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         gifImageView.image = nil
+    }
+    
+    func configure(with themedViewModel: GiphyPresentable?) {
+        guard let vm = themedViewModel, let url = vm.giphyURL else { return }
+
+        // Uses Kingfisher to cache the image
+        gifImageView.kf.setImage(with: url)
     }
     
     // MARK: - Private

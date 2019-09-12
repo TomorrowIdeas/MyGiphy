@@ -10,17 +10,19 @@ import UIKit
 
 // MARK: - MGDetailCoordinator
 
-class MGDetailCoordinator: MGCoordinator {
+final class MGDetailCoordinator: MGCoordinator {
     weak var parentCoordinator: MGMainCoordinator?
     var viewModel: MGGiphyCollectionViewCellViewModel?
     var childCoordinators: [MGCoordinator] = []
     var navigationController: UINavigationController
     
+    // Dependency injection for the view model
     init(nav: UINavigationController, viewModel: MGGiphyCollectionViewCellViewModel) {
         self.navigationController = nav
         self.viewModel = viewModel
     }
     
+    // Pushes the detail controller onto the stack
     func start() {
         let vc = MGGiphyDetailViewController.instantiate()
         vc.viewModel = viewModel

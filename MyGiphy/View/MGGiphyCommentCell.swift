@@ -45,8 +45,8 @@ final class MGGiphyCommentCell: UITableViewCell {
         self.contentView.addSubview(commentLabel)
         
         commentLabel.snp.makeConstraints { (make) in
-            make.right.equalToSuperview().offset(-15)
-            make.left.equalToSuperview().offset(15)
+            make.right.equalToSuperview().offset(-20)
+            make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(10)
             make.bottom.equalToSuperview().offset(-10)
         }

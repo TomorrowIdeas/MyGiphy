@@ -13,7 +13,8 @@ import SnapKit
 
 final class MGGiphyDetailViewController: UIViewController, MGStoryboarded {
     weak var coordinator: MGDetailCoordinator?
-    
+    private var isCommenting: Bool = false
+
     // List of comments for the Giphy GIF. Scrolls to last row when comment is added.
     private var comments: [String] = [] {
         didSet {
@@ -26,8 +27,6 @@ final class MGGiphyDetailViewController: UIViewController, MGStoryboarded {
             }
         }
     }
-    
-    private var isCommenting: Bool = false
     
     // Inject the view model
     var viewModel: MGGiphyCollectionViewCellViewModel? {
@@ -65,13 +64,13 @@ final class MGGiphyDetailViewController: UIViewController, MGStoryboarded {
     }
     
     // Adds a tap gesture when tapped outside of the keyboard
-    func hideKeyboardWhenTappedAround() {
+    private func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
     }
     
-    @objc func dismissKeyboard() {
+    @objc private func dismissKeyboard() {
         self.view.endEditing(true)
     }
     
@@ -101,7 +100,7 @@ final class MGGiphyDetailViewController: UIViewController, MGStoryboarded {
             make.left.right.equalToSuperview()
             make.top.equalTo(detailView.snp.bottom)
             make.height.equalTo((Constants.Screen.height * (1/3)))
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin).offset(-10)
         }
     }
 }
@@ -111,6 +110,7 @@ final class MGGiphyDetailViewController: UIViewController, MGStoryboarded {
 extension MGGiphyDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
     }
 }
 

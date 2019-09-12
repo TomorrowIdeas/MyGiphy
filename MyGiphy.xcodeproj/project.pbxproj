@@ -26,6 +26,9 @@
 		FCBCFE332328C7D800FF5CBE /* MG+Bold.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE322328C7D800FF5CBE /* MG+Bold.swift */; };
 		FCBCFE392328FAC100FF5CBE /* MGGiphyCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE382328FAC100FF5CBE /* MGGiphyCommentCell.swift */; };
 		FCBCFE3B232A02DE00FF5CBE /* MG+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE3A232A02DE00FF5CBE /* MG+CollectionView.swift */; };
+		FCBCFE42232A22DE00FF5CBE /* CommentTextViewPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE41232A22DE00FF5CBE /* CommentTextViewPresentable.swift */; };
+		FCBCFE44232A22EC00FF5CBE /* LabelPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE43232A22EC00FF5CBE /* LabelPresentable.swift */; };
+		FCBCFE46232A28EC00FF5CBE /* GiphyPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE45232A28EC00FF5CBE /* GiphyPresentable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		FCBCFE322328C7D800FF5CBE /* MG+Bold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MG+Bold.swift"; sourceTree = "<group>"; };
 		FCBCFE382328FAC100FF5CBE /* MGGiphyCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGGiphyCommentCell.swift; sourceTree = "<group>"; };
 		FCBCFE3A232A02DE00FF5CBE /* MG+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MG+CollectionView.swift"; sourceTree = "<group>"; };
+		FCBCFE41232A22DE00FF5CBE /* CommentTextViewPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextViewPresentable.swift; sourceTree = "<group>"; };
+		FCBCFE43232A22EC00FF5CBE /* LabelPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelPresentable.swift; sourceTree = "<group>"; };
+		FCBCFE45232A28EC00FF5CBE /* GiphyPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyPresentable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,12 +101,13 @@
 		D67896EB23074E860059BA75 /* MyGiphy */ = {
 			isa = PBXGroup;
 			children = (
+				FCBCFE3E232A223600FF5CBE /* Protocols */,
+				FCBCFE302328C13B00FF5CBE /* Constants */,
 				FCBCFE312328C7B000FF5CBE /* Extensions */,
 				FCBCFE1F232854FB00FF5CBE /* Coordinators */,
 				FCBCFE1B232793AA00FF5CBE /* Data */,
 				FCBCFE112327736400FF5CBE /* ViewModel */,
 				FCBCFE0C2327723800FF5CBE /* View */,
-				FCBCFE302328C13B00FF5CBE /* Constants */,
 				D67896EC23074E860059BA75 /* AppDelegate.swift */,
 				D67896F023074E860059BA75 /* Main.storyboard */,
 				D67896F323074E880059BA75 /* Assets.xcassets */,
@@ -173,6 +180,16 @@
 				FCBCFE3A232A02DE00FF5CBE /* MG+CollectionView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FCBCFE3E232A223600FF5CBE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FCBCFE41232A22DE00FF5CBE /* CommentTextViewPresentable.swift */,
+				FCBCFE43232A22EC00FF5CBE /* LabelPresentable.swift */,
+				FCBCFE45232A28EC00FF5CBE /* GiphyPresentable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +311,7 @@
 				FCBCFE13232773BE00FF5CBE /* MGGiphyCollectionViewCell.swift in Sources */,
 				D67896ED23074E860059BA75 /* AppDelegate.swift in Sources */,
 				FCBCFE2B232861CB00FF5CBE /* MGDetailCoordinator.swift in Sources */,
+				FCBCFE44232A22EC00FF5CBE /* LabelPresentable.swift in Sources */,
 				FCBCFE152327749300FF5CBE /* MGGiphyCollectionViewCellViewModel.swift in Sources */,
 				FCBCFE1D232794E300FF5CBE /* MGGiphySerialization.swift in Sources */,
 				FCBCFE3B232A02DE00FF5CBE /* MG+CollectionView.swift in Sources */,
@@ -303,6 +321,8 @@
 				FCBCFE2923285F4400FF5CBE /* MGGiphyDetailViewController.swift in Sources */,
 				FCBCFE2D2328BC7F00FF5CBE /* MGGiphyDetailView.swift in Sources */,
 				FCBCFE2F2328C13600FF5CBE /* Constants.swift in Sources */,
+				FCBCFE42232A22DE00FF5CBE /* CommentTextViewPresentable.swift in Sources */,
+				FCBCFE46232A28EC00FF5CBE /* GiphyPresentable.swift in Sources */,
 				FCBCFE332328C7D800FF5CBE /* MG+Bold.swift in Sources */,
 				FCBCFE392328FAC100FF5CBE /* MGGiphyCommentCell.swift in Sources */,
 			);
@@ -452,13 +472,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7KLRW8RU62;
+				DEVELOPMENT_TEAM = LP22J464X7;
 				INFOPLIST_FILE = MyGiphy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tomorrowideas.MyGiphy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomorrowideas.ChrisGiphy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -471,13 +491,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7KLRW8RU62;
+				DEVELOPMENT_TEAM = LP22J464X7;
 				INFOPLIST_FILE = MyGiphy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tomorrowideas.MyGiphy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomorrowideas.ChrisGiphy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

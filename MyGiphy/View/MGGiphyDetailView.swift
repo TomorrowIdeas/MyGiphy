@@ -10,31 +10,18 @@ import UIKit
 import Kingfisher
 import SnapKit
 
+typealias MGGiphyDetailPresentable = GiphyPresentable & LabelPresentable & CommentTextViewPresentable
+
 // MARK: - MGGiphyDetailView
 
 final class MGGiphyDetailView: UIView {
-    var viewModel: MGGiphyCollectionViewCellViewModel? {
+    var viewModel: MGGiphyDetailPresentable? {
         didSet {
-            guard let vm = viewModel, let url = vm.higherQualityUrl else {
+            guard let vm = viewModel else {
                 return
             }
             
-            // Set the title of the GIF
-            giphyTitle.text = vm.title
-            
-            // Display the owner's username for the GIF
-            let noUsernameForGiphy = "Who made this?"
-            usernameLabel.attributedText = vm.username != nil ? vm.username : noUsernameForGiphy.createBoldString()
-            
-            // Display the owner's avatar
-            if let avatar = vm.avatar, let avatarUrl = URL(string: avatar) {
-                avatarPicture.kf.setImage(with: avatarUrl)
-            } else {
-                avatarPicture.image = UIImage(named: "user36")
-            }
-            
-            // Set the image using Kingfisher
-            setupGiphyGifWithCache(url: url)
+            configure(with: vm)
         }
     }
     
@@ -42,7 +29,6 @@ final class MGGiphyDetailView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = label.font.withSize(14)
         return label
     }()
     
@@ -71,20 +57,14 @@ final class MGGiphyDetailView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Comments:"
-        label.font = label.font.withSize(14)
         return label
     }()
     
     let commentBox: UITextView = {
         let view = UITextView()
-        view.backgroundColor = .white
-        view.layer.borderColor = UIColor.lightGray.cgColor
         view.layer.borderWidth = 1.0
         view.layer.cornerRadius = 15
-        view.text = "Write a comment..."
-        view.textColor = UIColor.lightGray
         view.contentInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
-        view.font = view.font?.withSize(14)
         return view
     }()
     
@@ -98,17 +78,48 @@ final class MGGiphyDetailView: UIView {
         initialize()
     }
     
-    private func setupGiphyGifWithCache(url: URL) {
+    func configure(with themedViewModel: MGGiphyDetailPresentable?) {
+        guard let vm = themedViewModel, let url = vm.qualityGiphyURL else { return }
+        
+        // Display the owner's username for the GIF
+        let noUsernameForGiphy = "Who made this?"
+        usernameLabel.attributedText = vm.username != nil ? vm.username : noUsernameForGiphy.createBoldString()
         
         // Display activity indicator. When complete, load image with fade-in animation.
+        // Default cache time is 5 minutes for memory storage and a week for disk storage
         gifImageView.kf.indicatorType = .activity
         gifImageView.kf.setImage(
             with: url,
             options: [
-                .transition(.fade(1)),
+                .transition(.fade(0.5)),
             ])
+        
+        // Display the owner's avatar
+        if let avatar = vm.avatarName, let avatarUrl = URL(string: avatar) {
+            avatarPicture.kf.setImage(with: avatarUrl)
+        } else {
+            avatarPicture.image = UIImage(named: "user36")
+        }
+        
+        // Set the title of the GIF
+        giphyTitle.text = vm.title
+        
+        // Set the fonts
+        giphyTitle.font = vm.labelFont
+        commentLabel.font = vm.labelFont
+        commentBox.font = vm.commentTextViewFont
+        
+        // Set text color
+        giphyTitle.textColor = vm.labelTextColor
+        usernameLabel.textColor = vm.labelTextColor
+        commentLabel.textColor = vm.labelTextColor
+        commentBox.textColor = vm.commentTextViewColor
+        
+        commentBox.text = vm.commentTextViewPlaceholder
+        commentBox.backgroundColor = vm.commentTextViewBackgroundColor
+        commentBox.layer.borderColor = vm.commentTextViewBorderColor
     }
-
+    
     private func initialize() {
         self.addSubview(gifImageView)
         self.addSubview(usernameLabel)
