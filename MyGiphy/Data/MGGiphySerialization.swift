@@ -11,6 +11,10 @@ import GiphyCoreSDK
 
 final class MGGiphySerialization {
     func searchForGiphy(_ text: String, _ currentTotal: Int, completion: @escaping (([MGGiphyCollectionViewCellViewModel]) -> Void)) {
+        
+        // Do any additional setup after loading the view.
+        GiphyCore.configure(apiKey: "GPAA4CpNkEmIakNtPMQAVVUwmEHv7gyT")
+        
         var viewModels: [MGGiphyCollectionViewCellViewModel] = []
         
         GiphyCore.shared.search(text, media: .gif, offset: currentTotal, limit: 25, rating: .ratedPG13, lang: .english) { response, error in

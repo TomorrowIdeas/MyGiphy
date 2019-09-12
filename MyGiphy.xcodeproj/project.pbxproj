@@ -25,6 +25,7 @@
 		FCBCFE2F2328C13600FF5CBE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE2E2328C13600FF5CBE /* Constants.swift */; };
 		FCBCFE332328C7D800FF5CBE /* MG+Bold.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE322328C7D800FF5CBE /* MG+Bold.swift */; };
 		FCBCFE392328FAC100FF5CBE /* MGGiphyCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE382328FAC100FF5CBE /* MGGiphyCommentCell.swift */; };
+		FCBCFE3B232A02DE00FF5CBE /* MG+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBCFE3A232A02DE00FF5CBE /* MG+CollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		FCBCFE2E2328C13600FF5CBE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FCBCFE322328C7D800FF5CBE /* MG+Bold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MG+Bold.swift"; sourceTree = "<group>"; };
 		FCBCFE382328FAC100FF5CBE /* MGGiphyCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGGiphyCommentCell.swift; sourceTree = "<group>"; };
+		FCBCFE3A232A02DE00FF5CBE /* MG+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MG+CollectionView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				FCBCFE322328C7D800FF5CBE /* MG+Bold.swift */,
+				FCBCFE3A232A02DE00FF5CBE /* MG+CollectionView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				FCBCFE2B232861CB00FF5CBE /* DetailCoordinator.swift in Sources */,
 				FCBCFE152327749300FF5CBE /* MGGiphyCollectionViewCellViewModel.swift in Sources */,
 				FCBCFE1D232794E300FF5CBE /* MGGiphySerialization.swift in Sources */,
+				FCBCFE3B232A02DE00FF5CBE /* MG+CollectionView.swift in Sources */,
 				FCBCFE23232855B200FF5CBE /* MGStoryboarded.swift in Sources */,
 				FCBCFE252328564B00FF5CBE /* MainCoordinator.swift in Sources */,
 				FCBCFE212328551C00FF5CBE /* MGCoordinator.swift in Sources */,

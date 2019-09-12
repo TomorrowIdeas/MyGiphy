@@ -13,12 +13,18 @@ final class MGGiphyCommentCell: UITableViewCell {
     
     private let commentLabel: UILabel = {
         let label = UILabel()
-        label.text = "Wow this Giphy is amazing!! where did you find it?"
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         label.font = label.font.withSize(12)
         return label
     }()
+    
+    var comment: String? {
+        didSet {
+            commentLabel.text = comment
+        }
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -34,12 +40,13 @@ final class MGGiphyCommentCell: UITableViewCell {
     // MARK: - Private
     
     private func initialize() {
-        self.addSubview(commentLabel)
+        self.contentView.addSubview(commentLabel)
         
         commentLabel.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().offset(-15)
             make.left.equalToSuperview().offset(15)
-            make.centerY.equalToSuperview()
-            make.height.equalTo(20)
+            make.top.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().offset(-10)
         }
     }
 }

@@ -14,8 +14,9 @@ class DetailCoordinator: MGCoordinator {
     var childCoordinators: [MGCoordinator] = []
     var navigationController: UINavigationController
     
-    init(nav: UINavigationController) {
+    init(nav: UINavigationController, viewModel: MGGiphyCollectionViewCellViewModel) {
         self.navigationController = nav
+        self.viewModel = viewModel
     }
     
     func start() {

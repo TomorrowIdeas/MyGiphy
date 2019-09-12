@@ -25,20 +25,14 @@ class MainCoordinator: NSObject, MGCoordinator {
     }
     
     func showDetailsOfGif(vm: MGGiphyCollectionViewCellViewModel) {
-        let child = DetailCoordinator(nav: navigationController)
+        let child = DetailCoordinator(nav: navigationController, viewModel: vm)
         child.parentCoordinator = self
-        child.viewModel = vm
         childCoordinators.append(child)
         child.start()
     }
     
     func childDidFinish(_ child: MGCoordinator?) {
-        for (index, coordinator) in childCoordinators.enumerated() {
-            if coordinator === child {
-                childCoordinators.remove(at: index)
-                break
-            }
-        }
+        childCoordinators = childCoordinators.filter { $0 !== child }
     }
 }
 

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import GiphyUISDK
-import GiphyCoreSDK
 
 class MGGiphyListViewController: UIViewController, MGStoryboarded {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -32,9 +30,6 @@ class MGGiphyListViewController: UIViewController, MGStoryboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        GiphyCore.configure(apiKey: "GPAA4CpNkEmIakNtPMQAVVUwmEHv7gyT")
         
         initialize()
         searchWithOffset("corgi")
@@ -51,16 +46,6 @@ class MGGiphyListViewController: UIViewController, MGStoryboarded {
     
     @objc func dismissKeyboard() {
         self.searchBar.resignFirstResponder()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.hidesSearchBarWhenScrolling = false
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationItem.hidesSearchBarWhenScrolling = true
     }
     
     func searchWithOffset(_ text: String) {
@@ -133,14 +118,10 @@ extension MGGiphyListViewController: UICollectionViewDataSource {
 
 extension MGGiphyListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let size = collectionView.calculateSizeForCollectionViewItem()
         
-        let cellsPerRow = 3
-        let layout = collectionViewLayout as! UICollectionViewFlowLayout
-        
-        let space = layout.sectionInset.left + layout.sectionInset.right + (layout.minimumInteritemSpacing * CGFloat(cellsPerRow - 1))
-        
-        let size = Int((collectionView.bounds.width - space) / CGFloat(cellsPerRow))
-        return CGSize(width: size, height: 100)
+        return size
     }
 }
 
