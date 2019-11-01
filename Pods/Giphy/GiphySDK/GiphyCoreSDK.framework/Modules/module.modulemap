@@ -1,0 +1,4 @@
+framework module GiphyCoreSDK {
+  header "GiphyCoreSDK-Swift.h"
+  requires objc
+}

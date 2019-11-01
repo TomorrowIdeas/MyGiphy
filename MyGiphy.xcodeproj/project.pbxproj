@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3874C138968F7FC3E0F84DDD /* Pods_MyGiphy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4891C0B9E4F745981E07837B /* Pods_MyGiphy.framework */; };
 		D67896ED23074E860059BA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67896EC23074E860059BA75 /* AppDelegate.swift */; };
 		D67896EF23074E860059BA75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67896EE23074E860059BA75 /* ViewController.swift */; };
 		D67896F223074E860059BA75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67896F023074E860059BA75 /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C31BD463149894A06BED882 /* Pods-MyGiphy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGiphy.release.xcconfig"; path = "Target Support Files/Pods-MyGiphy/Pods-MyGiphy.release.xcconfig"; sourceTree = "<group>"; };
+		4891C0B9E4F745981E07837B /* Pods_MyGiphy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGiphy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		879877B649F9699F29BD26C9 /* Pods-MyGiphy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGiphy.debug.xcconfig"; path = "Target Support Files/Pods-MyGiphy/Pods-MyGiphy.debug.xcconfig"; sourceTree = "<group>"; };
 		D67896E923074E860059BA75 /* MyGiphy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGiphy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D67896EC23074E860059BA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D67896EE23074E860059BA75 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3874C138968F7FC3E0F84DDD /* Pods_MyGiphy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47CA9A5C1895FBA97387CC6E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4891C0B9E4F745981E07837B /* Pods_MyGiphy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		72DBC0BB9DBDE60CD9BB109F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				879877B649F9699F29BD26C9 /* Pods-MyGiphy.debug.xcconfig */,
+				3C31BD463149894A06BED882 /* Pods-MyGiphy.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D67896E023074E860059BA75 = {
 			isa = PBXGroup;
 			children = (
 				D67896EB23074E860059BA75 /* MyGiphy */,
 				D67896EA23074E860059BA75 /* Products */,
+				72DBC0BB9DBDE60CD9BB109F /* Pods */,
+				47CA9A5C1895FBA97387CC6E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D67896FB23074E880059BA75 /* Build configuration list for PBXNativeTarget "MyGiphy" */;
 			buildPhases = (
+				2FE64D27EFDC5EF2CE0895C7 /* [CP] Check Pods Manifest.lock */,
 				D67896E523074E860059BA75 /* Sources */,
 				D67896E623074E860059BA75 /* Frameworks */,
 				D67896E723074E860059BA75 /* Resources */,
+				B16C8675298BE8BD771D2D1A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +155,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2FE64D27EFDC5EF2CE0895C7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyGiphy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B16C8675298BE8BD771D2D1A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyGiphy/Pods-MyGiphy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyGiphy/Pods-MyGiphy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyGiphy/Pods-MyGiphy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D67896E523074E860059BA75 /* Sources */ = {
@@ -280,10 +348,11 @@
 		};
 		D67896FC23074E880059BA75 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 879877B649F9699F29BD26C9 /* Pods-MyGiphy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7KLRW8RU62;
+				DEVELOPMENT_TEAM = JGX8KL9J9F;
 				INFOPLIST_FILE = MyGiphy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -298,10 +367,11 @@
 		};
 		D67896FD23074E880059BA75 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C31BD463149894A06BED882 /* Pods-MyGiphy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7KLRW8RU62;
+				DEVELOPMENT_TEAM = JGX8KL9J9F;
 				INFOPLIST_FILE = MyGiphy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
