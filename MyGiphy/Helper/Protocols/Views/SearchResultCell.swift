@@ -25,11 +25,9 @@ class SearchResultCell: UICollectionViewCell {
 
     let giphyImageView: UIImageView = {
         let iv = UIImageView()
-        //iv.widthAnchor.constraint(equalToConstant: 350).isActive = true
-        //iv.heightAnchor.constraint(equalToConstant: 250).isActive = true
         iv.layer.cornerRadius = 16
         iv.clipsToBounds = true
-        iv.backgroundColor = .magenta
+        iv.backgroundColor = .white
         return iv
     }()
     

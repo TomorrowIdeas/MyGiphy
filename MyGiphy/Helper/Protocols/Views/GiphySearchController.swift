@@ -98,6 +98,10 @@ class GiphySearchController: UICollectionViewController, UICollectionViewDelegat
         
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        navigationController?.pushViewController(DetailViewController(), animated: true)
+    }
+    
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -118,6 +122,9 @@ class GiphySearchController: UICollectionViewController, UICollectionViewDelegat
     }
     
 }
+
+
+
 
 extension GiphySearchController {
     // If search text is changing, empty the collection view
