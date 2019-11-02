@@ -8,9 +8,22 @@
 
 import UIKit
 import SDWebImage
+import GiphyCoreSDK
+
+typealias MGGiphyDetailPresentable = GiphyPresentable & LabelPresentable & CommentTextViewPresentable
 
 
 class DetailViewController: UIViewController {
+    
+    var viewModel: MGGiphyDetailPresentable? {
+        didSet {
+            guard let vm = viewModel else {
+                return
+            }
+            
+            gifImageView.sd_setImage(with: vm.giphyURL)
+        }
+    }
     
     let gifImageView: UIImageView = {
         let iv = UIImageView()

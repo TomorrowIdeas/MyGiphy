@@ -99,7 +99,17 @@ class GiphySearchController: UICollectionViewController, UICollectionViewDelegat
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(DetailViewController(), animated: true)
+        let detailVc = DetailViewController()
+        let vm = viewModels[indexPath.row]
+        // Stops search when moving to the next screen
+        if searchBar.isFirstResponder {
+            searchBar.resignFirstResponder()
+        }
+        
+        detailVc.gifImageView.sd_setImage(with: vm.giphyURL)
+        
+        
+        navigationController?.pushViewController(detailVc, animated: true)
     }
     
     
