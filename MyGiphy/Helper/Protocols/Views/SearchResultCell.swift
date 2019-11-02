@@ -25,8 +25,8 @@ class SearchResultCell: UICollectionViewCell {
 
     let giphyImageView: UIImageView = {
         let iv = UIImageView()
-        iv.widthAnchor.constraint(equalToConstant: 370).isActive = true
-        iv.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        //iv.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        //iv.heightAnchor.constraint(equalToConstant: 250).isActive = true
         iv.layer.cornerRadius = 16
         iv.clipsToBounds = true
         iv.backgroundColor = .magenta
@@ -44,12 +44,9 @@ class SearchResultCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
-        let infoTopStackView = VerticalStackView(arrangedSubviews: [giphyImageView, giphyLabel])
-               infoTopStackView.spacing = 12
-               infoTopStackView.alignment = .center
-               addSubview(infoTopStackView)
-               infoTopStackView.fillSuperview(padding: .init(top: 16, left: 16, bottom: 16, right: 16))
-           }
+        addSubview(giphyImageView)
+        giphyImageView.fillSuperview(padding: .init(top: 0, left: 10, bottom: 0, right: 10))
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

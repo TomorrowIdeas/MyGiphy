@@ -17,9 +17,10 @@
 		05A32968236C9ED400DF90C2 /* MGGiphyCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A32967236C9ED400DF90C2 /* MGGiphyCollectionViewCellViewModel.swift */; };
 		05A3296A236CA50F00DF90C2 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A32969236CA50F00DF90C2 /* Service.swift */; };
 		05A3296C236CA76200DF90C2 /* GiphiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3296B236CA76200DF90C2 /* GiphiesModel.swift */; };
+		05A32970236D055000DF90C2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3296F236D055000DF90C2 /* DetailViewController.swift */; };
 		3874C138968F7FC3E0F84DDD /* Pods_MyGiphy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4891C0B9E4F745981E07837B /* Pods_MyGiphy.framework */; };
 		D67896ED23074E860059BA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67896EC23074E860059BA75 /* AppDelegate.swift */; };
-		D67896EF23074E860059BA75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67896EE23074E860059BA75 /* ViewController.swift */; };
+		D67896EF23074E860059BA75 /* GiphySearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67896EE23074E860059BA75 /* GiphySearchController.swift */; };
 		D67896F223074E860059BA75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67896F023074E860059BA75 /* Main.storyboard */; };
 		D67896F423074E880059BA75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D67896F323074E880059BA75 /* Assets.xcassets */; };
 		D67896F723074E880059BA75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67896F523074E880059BA75 /* LaunchScreen.storyboard */; };
@@ -36,12 +37,13 @@
 		05A32967236C9ED400DF90C2 /* MGGiphyCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGGiphyCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		05A32969236CA50F00DF90C2 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		05A3296B236CA76200DF90C2 /* GiphiesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphiesModel.swift; sourceTree = "<group>"; };
+		05A3296F236D055000DF90C2 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3C31BD463149894A06BED882 /* Pods-MyGiphy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGiphy.release.xcconfig"; path = "Target Support Files/Pods-MyGiphy/Pods-MyGiphy.release.xcconfig"; sourceTree = "<group>"; };
 		4891C0B9E4F745981E07837B /* Pods_MyGiphy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGiphy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		879877B649F9699F29BD26C9 /* Pods-MyGiphy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGiphy.debug.xcconfig"; path = "Target Support Files/Pods-MyGiphy/Pods-MyGiphy.debug.xcconfig"; sourceTree = "<group>"; };
 		D67896E923074E860059BA75 /* MyGiphy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGiphy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D67896EC23074E860059BA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D67896EE23074E860059BA75 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D67896EE23074E860059BA75 /* GiphySearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphySearchController.swift; sourceTree = "<group>"; };
 		D67896F123074E860059BA75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D67896F323074E880059BA75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D67896F623074E880059BA75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -83,8 +85,9 @@
 		05A32953236C8E5600DF90C2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D67896EE23074E860059BA75 /* ViewController.swift */,
+				D67896EE23074E860059BA75 /* GiphySearchController.swift */,
 				05A32958236C902100DF90C2 /* SearchResultCell.swift */,
+				05A3296F236D055000DF90C2 /* DetailViewController.swift */,
 			);
 			name = Views;
 			path = Helper/Protocols/Views;
@@ -275,8 +278,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05A32970236D055000DF90C2 /* DetailViewController.swift in Sources */,
 				05A32962236C9DE000DF90C2 /* LabelPrsentable.swift in Sources */,
-				D67896EF23074E860059BA75 /* ViewController.swift in Sources */,
+				D67896EF23074E860059BA75 /* GiphySearchController.swift in Sources */,
 				D67896ED23074E860059BA75 /* AppDelegate.swift in Sources */,
 				05A32957236C8EC400DF90C2 /* VerticalStackLayout.swift in Sources */,
 				05A3295E236C9D5E00DF90C2 /* GiphyPresentable.swift in Sources */,

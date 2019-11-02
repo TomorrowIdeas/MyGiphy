@@ -22,20 +22,20 @@ class GiphySearchController: UICollectionViewController, UICollectionViewDelegat
     private var isLoading: Bool = false
     
     // Inject the view models
-       var viewModels: [MGGiphyCollectionViewCellViewModel] = [] {
-           didSet {
-               // Property observer for reloading collection view
-               DispatchQueue.main.async { [weak self] in
-                   guard let strongSelf = self else { return }
-                   strongSelf.collectionView.reloadData()
-               }
-           }
-       }
-       
-       lazy var giphyService: MGGiphySerialization = {
-           return MGGiphySerialization()
-       }()
-
+    var viewModels: [MGGiphyCollectionViewCellViewModel] = [] {
+        didSet {
+            // Property observer for reloading collection view
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.collectionView.reloadData()
+            }
+        }
+    }
+    
+    lazy var giphyService: MGGiphySerialization = {
+        return MGGiphySerialization()
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,24 +49,24 @@ class GiphySearchController: UICollectionViewController, UICollectionViewDelegat
         
     }
     
-     private func initialize() {
-            searchBar.delegate = self
-            //searchBar.placeholder.text = "Search for GIFs!
-            navigationItem.hidesSearchBarWhenScrolling = false
-            navigationItem.titleView = searchBar
-            definesPresentationContext = true
+    private func initialize() {
+        searchBar.delegate = self
+        //searchBar.placeholder.text = "Search for GIFs!
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.titleView = searchBar
+        definesPresentationContext = true
     }
     
     private func initializeSearch() {
-           // Empty collection view if the search bar has no text
-           if searchBar.text == nil || searchBar.text == "" {
-               viewModels = []
-           } else {
-               // Cancel previous requests and throttle as you type
-               NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.fetchGiphys), object: searchBar)
-               perform(#selector(self.fetchGiphys), with: searchBar, afterDelay: 0.8)
-           }
-       }
+        // Empty collection view if the search bar has no text
+        if searchBar.text == nil || searchBar.text == "" {
+            viewModels = []
+        } else {
+            // Cancel previous requests and throttle as you type
+            NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.fetchGiphys), object: searchBar)
+            perform(#selector(self.fetchGiphys), with: searchBar, afterDelay: 0.8)
+        }
+    }
     
     @objc private func fetchGiphys() {
         let currentTotal = viewModels.count
@@ -80,27 +80,14 @@ class GiphySearchController: UICollectionViewController, UICollectionViewDelegat
     
     
     
-//    fileprivate func setupSearchBar() {
-//        definesPresentationContext = true
-//        navigationItem.searchController = self.searchController
-//        navigationItem.hidesSearchBarWhenScrolling = false
-//        searchController.searchBar.delegate = self
-//
-//
-//    }
-    
-    
-    
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-       viewModels = []
-       initializeSearch()
+        viewModels = []
+        initializeSearch()
         
-       
-       
+        
+        
     }
     
-
     
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
