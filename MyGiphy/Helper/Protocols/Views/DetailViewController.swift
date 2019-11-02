@@ -12,27 +12,8 @@ import GiphyCoreSDK
 
 
 class DetailViewController: UIViewController {
-    var avatarName: String?
     
-    var username: NSMutableAttributedString?
-    
-    let userNameLabel: UILabel = {
-        let label = UILabel()
-        label.attributedText = NSAttributedString(string: "Label")
-        return label
-    }()
-    
-    
-    let avatarLabel: UILabel = {
-        let label = UILabel()
-        label.text = "User name"
-        return label
-    }()
-    
-    
-    let avatarNameLabel = UILabel()
-    
-    let gifImageView: UIImageView = {
+    public let gifImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .red
         iv.layer.cornerRadius = 16
@@ -43,23 +24,17 @@ class DetailViewController: UIViewController {
         return iv
     }()
     
-    let textField: UITextField = {
+    private let textField: UITextField = {
         let tf = UITextField()
         tf.heightAnchor.constraint(equalToConstant: 45).isActive = true
         tf.widthAnchor.constraint(equalToConstant: 270).isActive = true
         tf.backgroundColor = #colorLiteral(red: 0.9454339378, green: 0.9454339378, blue: 0.9454339378, alpha: 1)
         tf.layer.cornerRadius =  16
-        
         return tf
-        
     }()
     
-    let commentTableView: UITableView = {
-        let tableView = UITableView()
-        return tableView
-    }()
     
-    let textView: UITextView = {
+    private let textView: UITextView = {
         let tv = UITextView()
         tv.heightAnchor.constraint(equalToConstant: 300).isActive = true
         tv.widthAnchor.constraint(equalToConstant: 150).isActive = true
@@ -70,7 +45,7 @@ class DetailViewController: UIViewController {
         return tv
     }()
     
-    let sendButton: UIButton = {
+    private let sendButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Send", for: .normal)
         button.setTitleColor(.blue, for: .normal)
@@ -89,25 +64,21 @@ class DetailViewController: UIViewController {
             textField.text = ""
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Details"
         hideKeyboardWhenTapped()
         configureUI()
-
-       
+        
+        
         
     }
     
     private func configureUI() {
         view.backgroundColor = .white
-        
         view.addSubview(gifImageView)
         gifImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 50, left: 20, bottom: 0, right: 20))
-        
-        gifImageView.addSubview(userNameLabel)
-        userNameLabel.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 5, left: 5, bottom: 0, right: 0))
         view.addSubview(textField)
         textField.anchor(top: gifImageView.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 10, left: 20, bottom: 0, right: 0))
         view.addSubview(textView)
@@ -125,7 +96,7 @@ class DetailViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-
     
-
+    
+    
 }

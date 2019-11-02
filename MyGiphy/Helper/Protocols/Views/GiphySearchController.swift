@@ -49,7 +49,6 @@ class GiphySearchController: UICollectionViewController, UICollectionViewDelegat
     
     private func initialize() {
         searchBar.delegate = self
-        //searchBar.placeholder.text = "Search for GIFs!
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.titleView = searchBar
         definesPresentationContext = true

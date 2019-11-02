@@ -10,8 +10,12 @@ import Foundation
 import Foundation
 import UIKit
 
+//This is major boiler plates for the constrains for the UI. It saves you a bunch of time when you build the UI programatically.
+
 
 extension UIView {
+    
+    //Anchor method helps you to constrain your UI easaly. It takes care of meny boiler plactes for the constraints.
     
     @discardableResult
     func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) -> AnchoredConstraints {
