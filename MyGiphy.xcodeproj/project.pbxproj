@@ -11,8 +11,6 @@
 		05A32957236C8EC400DF90C2 /* VerticalStackLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A32956236C8EC400DF90C2 /* VerticalStackLayout.swift */; };
 		05A32959236C902100DF90C2 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A32958236C902100DF90C2 /* SearchResultCell.swift */; };
 		05A3295E236C9D5E00DF90C2 /* GiphyPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3295D236C9D5E00DF90C2 /* GiphyPresentable.swift */; };
-		05A32960236C9D9300DF90C2 /* CommentTextViewPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3295F236C9D9300DF90C2 /* CommentTextViewPresentable.swift */; };
-		05A32962236C9DE000DF90C2 /* LabelPrsentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A32961236C9DE000DF90C2 /* LabelPrsentable.swift */; };
 		05A32965236C9E6B00DF90C2 /* MGGiphySerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A32964236C9E6B00DF90C2 /* MGGiphySerialization.swift */; };
 		05A32968236C9ED400DF90C2 /* MGGiphyCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A32967236C9ED400DF90C2 /* MGGiphyCollectionViewCellViewModel.swift */; };
 		05A3296A236CA50F00DF90C2 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A32969236CA50F00DF90C2 /* Service.swift */; };
@@ -31,8 +29,6 @@
 		05A32956236C8EC400DF90C2 /* VerticalStackLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackLayout.swift; sourceTree = "<group>"; };
 		05A32958236C902100DF90C2 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		05A3295D236C9D5E00DF90C2 /* GiphyPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyPresentable.swift; sourceTree = "<group>"; };
-		05A3295F236C9D9300DF90C2 /* CommentTextViewPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextViewPresentable.swift; sourceTree = "<group>"; };
-		05A32961236C9DE000DF90C2 /* LabelPrsentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelPrsentable.swift; sourceTree = "<group>"; };
 		05A32964236C9E6B00DF90C2 /* MGGiphySerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGGiphySerialization.swift; sourceTree = "<group>"; };
 		05A32967236C9ED400DF90C2 /* MGGiphyCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGGiphyCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		05A32969236CA50F00DF90C2 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -75,8 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				05A3295D236C9D5E00DF90C2 /* GiphyPresentable.swift */,
-				05A3295F236C9D9300DF90C2 /* CommentTextViewPresentable.swift */,
-				05A32961236C9DE000DF90C2 /* LabelPrsentable.swift */,
 			);
 			name = Protocols;
 			path = Helper/Protocols;
@@ -279,12 +273,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				05A32970236D055000DF90C2 /* DetailViewController.swift in Sources */,
-				05A32962236C9DE000DF90C2 /* LabelPrsentable.swift in Sources */,
 				D67896EF23074E860059BA75 /* GiphySearchController.swift in Sources */,
 				D67896ED23074E860059BA75 /* AppDelegate.swift in Sources */,
 				05A32957236C8EC400DF90C2 /* VerticalStackLayout.swift in Sources */,
 				05A3295E236C9D5E00DF90C2 /* GiphyPresentable.swift in Sources */,
-				05A32960236C9D9300DF90C2 /* CommentTextViewPresentable.swift in Sources */,
 				05A3296A236CA50F00DF90C2 /* Service.swift in Sources */,
 				05A3296C236CA76200DF90C2 /* GiphiesModel.swift in Sources */,
 				05A32955236C8E9D00DF90C2 /* UIView+Layout.swift in Sources */,

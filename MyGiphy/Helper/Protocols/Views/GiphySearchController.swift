@@ -44,8 +44,6 @@ class GiphySearchController: UICollectionViewController, UICollectionViewDelegat
         initialize()
         searchBar.text = "smile"
         fetchGiphys()
-        //setupSearchBar()
-        
         
     }
     
@@ -78,14 +76,9 @@ class GiphySearchController: UICollectionViewController, UICollectionViewDelegat
         }
     }
     
-    
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModels = []
         initializeSearch()
-        
-        
-        
     }
     
     
@@ -105,14 +98,9 @@ class GiphySearchController: UICollectionViewController, UICollectionViewDelegat
         if searchBar.isFirstResponder {
             searchBar.resignFirstResponder()
         }
-        
         detailVc.gifImageView.sd_setImage(with: vm.giphyURL)
-        
-        
         navigationController?.pushViewController(detailVc, animated: true)
     }
-    
-    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         

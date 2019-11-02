@@ -28,43 +28,7 @@ struct MGGiphyCollectionViewCellViewModel {
     }
 }
 
-// MARK: - CommentTextViewPresentable
 
-extension MGGiphyCollectionViewCellViewModel: CommentTextViewPresentable {
-    var commentTextViewColor: UIColor {
-        return .lightGray
-    }
-    
-    var commentTextViewFont: UIFont {
-        return .systemFont(ofSize: 12)
-    }
-}
-
-// MARK: - LabelPresentable
-
-extension MGGiphyCollectionViewCellViewModel: LabelPresentable {
-    var title: String? {
-        return myGiphy.title
-    }
-    
-    var avatarName: String? {
-        return myGiphy.user?.avatarUrl
-    }
-    
-    var username: NSMutableAttributedString? {
-        let str = myGiphy.user?.displayName
-        
-        return str?.createBoldString()
-    }
-    
-    var labelTextColor: UIColor {
-        return .black
-    }
-    
-    var labelFont: UIFont {
-        return .systemFont(ofSize: 14)
-    }
-}
 
 // MARK: - GiphyPresentable
 
