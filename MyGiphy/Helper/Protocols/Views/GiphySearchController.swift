@@ -97,7 +97,7 @@ class GiphySearchController: UICollectionViewController, UICollectionViewDelegat
         if searchBar.isFirstResponder {
             searchBar.resignFirstResponder()
         }
-        detailVc.gifImageView.sd_setImage(with: vm.giphyURL)
+        detailVc.gifImageView.sd_setImage(with: vm.qualityGiphyURL)
         navigationController?.pushViewController(detailVc, animated: true)
     }
     
