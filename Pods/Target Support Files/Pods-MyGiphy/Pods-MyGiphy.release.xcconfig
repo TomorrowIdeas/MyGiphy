@@ -1,9 +1,9 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/DeepDiff" "${PODS_CONFIGURATION_BUILD_DIR}/PINCache" "${PODS_CONFIGURATION_BUILD_DIR}/libwebp" "${PODS_ROOT}/Giphy/GiphySDK" "${PODS_ROOT}/Giphy/GiphySDK/GiphyCoreSDK.framework/omsdk-ios-1.2.20-Giphy"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/DeepDiff" "${PODS_CONFIGURATION_BUILD_DIR}/PINCache" "${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage" "${PODS_CONFIGURATION_BUILD_DIR}/libwebp" "${PODS_ROOT}/Giphy/GiphySDK" "${PODS_ROOT}/Giphy/GiphySDK/GiphyCoreSDK.framework/omsdk-ios-1.2.20-Giphy"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/DeepDiff/DeepDiff.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/PINCache/PINCache.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/libwebp/libwebp.framework/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/DeepDiff/DeepDiff.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/PINCache/PINCache.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/libwebp/libwebp.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_LDFLAGS = $(inherited) -ObjC -framework "DeepDiff" -framework "Foundation" -framework "GiphyCoreSDK" -framework "GiphyUISDK" -framework "OMSDK_Giphy" -framework "PINCache" -framework "UIKit" -framework "libwebp" -weak_framework "UIKit"
+OTHER_LDFLAGS = $(inherited) -ObjC -framework "DeepDiff" -framework "Foundation" -framework "GiphyCoreSDK" -framework "GiphyUISDK" -framework "ImageIO" -framework "OMSDK_Giphy" -framework "PINCache" -framework "SDWebImage" -framework "UIKit" -framework "libwebp" -weak_framework "UIKit"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

@@ -9,6 +9,7 @@ target 'MyGiphy' do
   use_frameworks!
   
   pod 'Giphy'
+  pod 'SDWebImage', '~> 5.0'
   
 
 end

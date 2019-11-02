@@ -14,9 +14,13 @@ PODS:
     - libwebp/demux
   - libwebp/webp (1.0.3)
   - PINCache (2.3)
+  - SDWebImage (5.2.5):
+    - SDWebImage/Core (= 5.2.5)
+  - SDWebImage/Core (5.2.5)
 
 DEPENDENCIES:
   - Giphy
+  - SDWebImage (~> 5.0)
 
 SPEC REPOS:
   trunk:
@@ -24,13 +28,15 @@ SPEC REPOS:
     - Giphy
     - libwebp
     - PINCache
+    - SDWebImage
 
 SPEC CHECKSUMS:
   DeepDiff: e329bc46dd14ca788d8ec08d34420799ba1d77f2
   Giphy: eded2d828f260be34d61d85d9932f05b9edc2a66
   libwebp: 057912d6d0abfb6357d8bb05c0ea470301f5d61e
   PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
+  SDWebImage: 4eabf2fa6695c95c47724214417a9c036c965e4a
 
-PODFILE CHECKSUM: a24f1074f094dd3b6193993ab85a6b833683b7e6
+PODFILE CHECKSUM: e0e77a035b130a5dbc1bb8bfcbf9dea762fd1f7a
 
 COCOAPODS: 1.8.4
