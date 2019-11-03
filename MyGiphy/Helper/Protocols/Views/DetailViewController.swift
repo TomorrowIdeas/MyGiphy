@@ -48,10 +48,10 @@ class DetailViewController: UIViewController {
     private let sendButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Send", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 14)
-        button.backgroundColor = UIColor(white: 0.95, alpha: 1)
-        button.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        button.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+       // button.widthAnchor.constraint(equalToConstant: 80).isActive = true
         button.heightAnchor.constraint(equalToConstant: 45).isActive = true
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
@@ -84,7 +84,7 @@ class DetailViewController: UIViewController {
         view.addSubview(textView)
         textView.anchor(top: textField.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 10, left: 20, bottom: 0, right: 20))
         view.addSubview(sendButton)
-        sendButton.anchor(top: gifImageView.bottomAnchor, leading: nil, bottom: textView.topAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 5, bottom: 10, right: 20))
+        sendButton.anchor(top: gifImageView.bottomAnchor, leading: textField.trailingAnchor, bottom: textView.topAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 5, bottom: 10, right: 20))
     }
     
     private func hideKeyboardWhenTapped() {
