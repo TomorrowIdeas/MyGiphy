@@ -29,12 +29,13 @@ extension Endpoint {
 }
 
 extension Endpoint {
-    static func gifs(keword: String = "Lain", apiKey: String = keys.apiKey, limit: Int = 10) -> Endpoint {
+    static func gifs(keyword: String, apiKey: String = keys.apiKey, limit: Int, offset: Int) -> Endpoint {
         return Endpoint(
             path: "/v1/gifs/search",
-            queryItems: [URLQueryItem(name: "q", value: keword),
+            queryItems: [URLQueryItem(name: "q", value: keyword),
                          URLQueryItem(name: "api_key", value: apiKey),
-                         URLQueryItem(name: "limit", value: "\(limit)")]
+                         URLQueryItem(name: "limit", value: "\(limit)"),
+                         URLQueryItem(name: "offset", value: "\(offset)")]
         )
     }
 }

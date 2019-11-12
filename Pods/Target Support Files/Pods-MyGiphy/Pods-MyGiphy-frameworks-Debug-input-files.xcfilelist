@@ -1,2 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-MyGiphy/Pods-MyGiphy-frameworks.sh
+${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework
 ${BUILT_PRODUCTS_DIR}/Keys/Keys.framework
+${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework
