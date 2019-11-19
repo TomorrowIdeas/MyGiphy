@@ -15,18 +15,24 @@ class RootVC: UICollectionViewController {
     let gifInteractor = GifInteractor()
     let searchController = UISearchController(searchResultsController: nil)
     lazy var spinnerPresenter = SpinnerPresenter(hasDimView: true, spinnerStyle: .whiteLarge)
+    private var searchKeyword: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
         configureSearchController()
         configureCollectionView()
+        spinnerPresenter.addSpinner()
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        spinnerPresenter.addSpinner()
         fetchGifs()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
     }
 
     func configureNavigationBar() {
@@ -36,7 +42,9 @@ class RootVC: UICollectionViewController {
     }
     
     func configureCollectionView() {
-        collectionView.isPagingEnabled = true
+        collectionView.isScrollEnabled = true
+        collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView?.backgroundColor = .darkBackground
         collectionView?.contentInset = UIEdgeInsets(top: 23, left: 10, bottom: 10, right: 10)
         let nib = UINib(nibName: reuseIdentifier, bundle: nil)
@@ -44,31 +52,36 @@ class RootVC: UICollectionViewController {
         if let layout = collectionView?.collectionViewLayout as? RootViewLayout {
             layout.delegate = self
         }
+        
+        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "Footer")
+        (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.footerReferenceSize = CGSize(width: collectionView.bounds.width, height: 50)
     }
     
     func configureSearchController() {
-        searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
         searchController.searchBar.delegate = self
         definesPresentationContext = true
     }
     
+//    TODO: Figure out why this collection view is not reloading with self.gifs += newGifs
+    
     func fetchGifs(keyword: String = "lain", limit: Int = 15, offset: Int = 0) {
         gifInteractor.fetchGifs(.gifs(keyword: keyword, limit: limit, offset: offset)) { (gif, error) in
-            if let error = error {
-                print(error)
+            if let _ = error {
+//                TODO: Add error presenter
             } else {
-                self.offset += 15
+                self.offset += limit
                 guard let newGifs = gif?.data else { return }
                 guard let paginationData = gif?.pagination else { return }
                 
                 if paginationData.totalCount / self.offset > 1 {
-                    self.gifs.append(contentsOf: newGifs)
-                    DispatchQueue.main.async {
-                      self.collectionView.reloadData()
-                      self.spinnerPresenter.removeSpinner()
-                    }
+                    self.gifs = newGifs
+                }
+                
+                DispatchQueue.main.async {
+                  self.collectionView.reloadData()
+                  self.spinnerPresenter.removeSpinner()
                 }
             }
         }
@@ -77,6 +90,7 @@ class RootVC: UICollectionViewController {
 
 extension RootVC {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(gifs.count)
         return gifs.count
     }
     
@@ -87,8 +101,12 @@ extension RootVC {
     }
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == gifs.count - 2 {
-            fetchGifs( limit: 15, offset: offset)
+        if indexPath.row == gifs.count - 1 {
+            if let keyword = searchKeyword {
+                fetchGifs(keyword: keyword, limit: 15, offset: offset)
+            } else {
+                fetchGifs(limit: 15, offset: offset)
+            }
         }
     }
     
@@ -96,6 +114,9 @@ extension RootVC {
         let vc = DetailVC(selectedGif: gifs[indexPath.row])
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+//    TODO: Add activity indicater to footer
+    
 }
 
 extension RootVC : RootViewLayoutDelegate {
@@ -105,23 +126,12 @@ extension RootVC : RootViewLayoutDelegate {
     }
 }
 
-
-extension RootVC: UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else { return }
-        print(text)
-    }
-    
+extension RootVC: UISearchControllerDelegate, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else { return }
+        searchKeyword = text
         spinnerPresenter.addSpinner()
         fetchGifs(keyword: text)
-    }
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-       guard let text = searchBar.text else { return }
-       if text.isEmpty {
-          print("")
-       }
+        searchController.isActive = false
     }
 }
