@@ -89,13 +89,12 @@ class RootVC: UICollectionViewController {
 }
 
 extension RootVC {
-//    TODO: Add prefetching
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(gifs.count)
         return gifs.count
     }
     
+    //    TODO: Add prefetching
+
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! GifCell
           cell.configure(with: gifs[indexPath.row])

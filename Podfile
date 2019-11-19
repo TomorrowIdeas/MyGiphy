@@ -6,7 +6,6 @@ target 'MyGiphy' do
   use_frameworks!
   
   pod 'FLAnimatedImage'
-  pod "SkeletonView"
   
   plugin 'cocoapods-keys', {
   :project => "MyGiphy",

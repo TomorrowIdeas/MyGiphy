@@ -1,17 +1,14 @@
 PODS:
   - FLAnimatedImage (1.0.12)
   - Keys (1.0.1)
-  - SkeletonView (1.8.2)
 
 DEPENDENCIES:
   - FLAnimatedImage
   - Keys (from `Pods/CocoaPodsKeys`)
-  - SkeletonView
 
 SPEC REPOS:
   trunk:
     - FLAnimatedImage
-    - SkeletonView
 
 EXTERNAL SOURCES:
   Keys:
@@ -20,8 +17,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
-  SkeletonView: bb27c39857e5492136f02ee8a3aa78de55d12ecd
 
-PODFILE CHECKSUM: 2abf9b5f82820b5501719d33e0e5b40f86d0384a
+PODFILE CHECKSUM: 5b515f1bc910a531af19b9ab381efefbe66353fd
 
 COCOAPODS: 1.8.4
