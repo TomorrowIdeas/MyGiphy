@@ -89,6 +89,8 @@ class RootVC: UICollectionViewController {
 }
 
 extension RootVC {
+//    TODO: Add prefetching
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print(gifs.count)
         return gifs.count
