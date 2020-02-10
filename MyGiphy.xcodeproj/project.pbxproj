@@ -9,19 +9,37 @@
 /* Begin PBXBuildFile section */
 		D67896ED23074E860059BA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67896EC23074E860059BA75 /* AppDelegate.swift */; };
 		D67896EF23074E860059BA75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67896EE23074E860059BA75 /* ViewController.swift */; };
-		D67896F223074E860059BA75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67896F023074E860059BA75 /* Main.storyboard */; };
 		D67896F423074E880059BA75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D67896F323074E880059BA75 /* Assets.xcassets */; };
 		D67896F723074E880059BA75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67896F523074E880059BA75 /* LaunchScreen.storyboard */; };
+		F150D24E23F2079D0039A49D /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150D24D23F2079D0039A49D /* UIView+Anchors.swift */; };
+		F150D25023F207A70039A49D /* UIViewController+Children.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150D24F23F207A70039A49D /* UIViewController+Children.swift */; };
+		F1E23CF323F1FD7300C6E4DF /* GiphyDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E23CF223F1FD7300C6E4DF /* GiphyDataProvider.swift */; };
+		F1E23CF723F1FD9100C6E4DF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E23CF623F1FD9100C6E4DF /* HomeViewController.swift */; };
+		F1E23CF923F1FD9D00C6E4DF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E23CF823F1FD9D00C6E4DF /* HomeView.swift */; };
+		F1E23CFE23F1FDF200C6E4DF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E23CFD23F1FDF200C6E4DF /* DetailViewController.swift */; };
+		F1E23D0023F1FDFC00C6E4DF /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E23CFF23F1FDFC00C6E4DF /* DetailView.swift */; };
+		F1E23D0323F1FE1A00C6E4DF /* GiphyNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E23D0223F1FE1A00C6E4DF /* GiphyNetworkService.swift */; };
+		F1E23D0723F2003000C6E4DF /* Giph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E23D0623F2003000C6E4DF /* Giph.swift */; };
+		F1E23D0E23F204A300C6E4DF /* GiphySearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E23D0D23F204A300C6E4DF /* GiphySearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D67896E923074E860059BA75 /* MyGiphy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGiphy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D67896EC23074E860059BA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D67896EE23074E860059BA75 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D67896F123074E860059BA75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D67896F323074E880059BA75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D67896F623074E880059BA75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D67896F823074E880059BA75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F150D24D23F2079D0039A49D /* UIView+Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Anchors.swift"; sourceTree = "<group>"; };
+		F150D24F23F207A70039A49D /* UIViewController+Children.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Children.swift"; sourceTree = "<group>"; };
+		F1E23CF223F1FD7300C6E4DF /* GiphyDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyDataProvider.swift; sourceTree = "<group>"; };
+		F1E23CF623F1FD9100C6E4DF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F1E23CF823F1FD9D00C6E4DF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F1E23CFD23F1FDF200C6E4DF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		F1E23CFF23F1FDFC00C6E4DF /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		F1E23D0223F1FE1A00C6E4DF /* GiphyNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyNetworkService.swift; sourceTree = "<group>"; };
+		F1E23D0623F2003000C6E4DF /* Giph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Giph.swift; sourceTree = "<group>"; };
+		F1E23D0D23F204A300C6E4DF /* GiphySearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphySearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +72,127 @@
 		D67896EB23074E860059BA75 /* MyGiphy */ = {
 			isa = PBXGroup;
 			children = (
+				F1E23D0423F1FE3300C6E4DF /* App */,
+				F1E23CEF23F1FD5200C6E4DF /* UI */,
+				F1E23CEE23F1FD4D00C6E4DF /* Business */,
+				F1E23CED23F1FD4600C6E4DF /* Data */,
+				F150D24C23F2078F0039A49D /* Extensions */,
+			);
+			path = MyGiphy;
+			sourceTree = "<group>";
+		};
+		F150D24C23F2078F0039A49D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F150D24D23F2079D0039A49D /* UIView+Anchors.swift */,
+				F150D24F23F207A70039A49D /* UIViewController+Children.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F1E23CED23F1FD4600C6E4DF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F1E23D0523F2002400C6E4DF /* Model */,
+				F1E23CF123F1FD6000C6E4DF /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F1E23CEE23F1FD4D00C6E4DF /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				F1E23CF223F1FD7300C6E4DF /* GiphyDataProvider.swift */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		F1E23CEF23F1FD5200C6E4DF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F1E23CF423F1FD7E00C6E4DF /* Home */,
+				F1E23CF523F1FD8300C6E4DF /* Detail */,
+				F1E23CFB23F1FDCE00C6E4DF /* Shared */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F1E23CF123F1FD6000C6E4DF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F1E23D0223F1FE1A00C6E4DF /* GiphyNetworkService.swift */,
+				F1E23D0C23F2049400C6E4DF /* NetworkResponseTypes */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F1E23CF423F1FD7E00C6E4DF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F1E23CF623F1FD9100C6E4DF /* HomeViewController.swift */,
+				F1E23CF823F1FD9D00C6E4DF /* HomeView.swift */,
+				F1E23CFA23F1FDA500C6E4DF /* Children */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F1E23CF523F1FD8300C6E4DF /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				F1E23CFD23F1FDF200C6E4DF /* DetailViewController.swift */,
+				F1E23CFF23F1FDFC00C6E4DF /* DetailView.swift */,
+				F1E23D0123F1FE0100C6E4DF /* Children */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		F1E23CFA23F1FDA500C6E4DF /* Children */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Children;
+			sourceTree = "<group>";
+		};
+		F1E23CFB23F1FDCE00C6E4DF /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		F1E23D0123F1FE0100C6E4DF /* Children */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Children;
+			sourceTree = "<group>";
+		};
+		F1E23D0423F1FE3300C6E4DF /* App */ = {
+			isa = PBXGroup;
+			children = (
 				D67896EC23074E860059BA75 /* AppDelegate.swift */,
 				D67896EE23074E860059BA75 /* ViewController.swift */,
-				D67896F023074E860059BA75 /* Main.storyboard */,
 				D67896F323074E880059BA75 /* Assets.xcassets */,
 				D67896F523074E880059BA75 /* LaunchScreen.storyboard */,
 				D67896F823074E880059BA75 /* Info.plist */,
 			);
-			path = MyGiphy;
+			path = App;
+			sourceTree = "<group>";
+		};
+		F1E23D0523F2002400C6E4DF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F1E23D0623F2003000C6E4DF /* Giph.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F1E23D0C23F2049400C6E4DF /* NetworkResponseTypes */ = {
+			isa = PBXGroup;
+			children = (
+				F1E23D0D23F204A300C6E4DF /* GiphySearchResult.swift */,
+			);
+			path = NetworkResponseTypes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,7 +255,6 @@
 			files = (
 				D67896F723074E880059BA75 /* LaunchScreen.storyboard in Resources */,
 				D67896F423074E880059BA75 /* Assets.xcassets in Resources */,
-				D67896F223074E860059BA75 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,22 +265,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F150D24E23F2079D0039A49D /* UIView+Anchors.swift in Sources */,
+				F1E23D0E23F204A300C6E4DF /* GiphySearchResult.swift in Sources */,
+				F1E23D0323F1FE1A00C6E4DF /* GiphyNetworkService.swift in Sources */,
 				D67896EF23074E860059BA75 /* ViewController.swift in Sources */,
+				F1E23D0723F2003000C6E4DF /* Giph.swift in Sources */,
+				F1E23CF323F1FD7300C6E4DF /* GiphyDataProvider.swift in Sources */,
 				D67896ED23074E860059BA75 /* AppDelegate.swift in Sources */,
+				F150D25023F207A70039A49D /* UIViewController+Children.swift in Sources */,
+				F1E23D0023F1FDFC00C6E4DF /* DetailView.swift in Sources */,
+				F1E23CFE23F1FDF200C6E4DF /* DetailViewController.swift in Sources */,
+				F1E23CF923F1FD9D00C6E4DF /* HomeView.swift in Sources */,
+				F1E23CF723F1FD9100C6E4DF /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D67896F023074E860059BA75 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D67896F123074E860059BA75 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D67896F523074E880059BA75 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -284,7 +416,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7KLRW8RU62;
-				INFOPLIST_FILE = MyGiphy/Info.plist;
+				INFOPLIST_FILE = MyGiphy/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +434,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7KLRW8RU62;
-				INFOPLIST_FILE = MyGiphy/Info.plist;
+				INFOPLIST_FILE = MyGiphy/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
