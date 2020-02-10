@@ -8,6 +8,20 @@
 
 import UIKit
 
-class DetailView: UIView {
+import UIKit
+
+class DetailView: UIView, ProgrammaticLayoutView {
     
+    // MARK: Subviews
+    
+    // MARK: Stored constraints
+    
+    // MARK: Configuration methods
+    func configureSubviews() {
+        
+    }
+    
+    func configureLayout() {
+        
+    }
 }
