@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// To be used when creating Home or Detail controllers. Manages dependency injection for the controllers.
 class ControllerFactory {
     
     // MARK: Properties

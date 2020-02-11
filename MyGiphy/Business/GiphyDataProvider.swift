@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// To be used for searching Giphy and paginating further results
 class GiphyDataProvider {
     
     // MARK: Properties
@@ -24,6 +25,7 @@ class GiphyDataProvider {
     }
     
     // MARK: Private methods
+    /// Performs the search with the current search parameters
     private func performSearch(_ completion: @escaping searchCompletion) {
         networkService.searchGiphy(with: currentKeyword, limit: searchLimit, offset: currentOffset) { (giphs, error) in
             if let error = error {
@@ -35,12 +37,15 @@ class GiphyDataProvider {
     }
     
     // MARK: Public methods
+    
+    /// Begins new Giphy search
     public func search(withText text: String, completion: @escaping searchCompletion) {
         currentKeyword = text
         currentOffset = 0
         performSearch(completion)
     }
     
+    /// Fetches the next page of giphs
     public func nextPage(completion: @escaping searchCompletion) {
         currentOffset += searchLimit
         performSearch(completion)

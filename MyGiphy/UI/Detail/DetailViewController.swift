@@ -12,7 +12,7 @@ class DetailViewController: UIViewController {
     
     // MARK: Properties
     var giph: Giph?
-    var networkService: GiphyNetworkService?
+    weak var networkService: GiphyNetworkService?
     
     private let baseView = DetailView()
     private var comments: [Comment] = []
@@ -82,6 +82,10 @@ extension DetailViewController: ExpandingInputDelegate {
 extension DetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
