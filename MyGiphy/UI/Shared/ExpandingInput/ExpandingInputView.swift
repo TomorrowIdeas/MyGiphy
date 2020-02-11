@@ -33,6 +33,7 @@ class ExpandingInputView: UIView, ProgrammaticLayoutView {
         containerView.layer.borderColor = UIColor.purple.cgColor
         containerView.layer.borderWidth = 2
         containerView.layer.cornerRadius = 30
+        containerView.backgroundColor = .white
         
         searchIcon.image = UIImage(named: "search_icon")
         searchIcon.contentMode = .scaleAspectFit

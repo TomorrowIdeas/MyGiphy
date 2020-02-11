@@ -59,11 +59,11 @@ class HomeViewController: UIViewController {
 extension HomeViewController: ExpandingInputDelegate {
     func didInput(text: String, expandingInput: ExpandingInputViewController) {
         expandingInput.toggleInactive()
-        dataProvider?.search(withText: text, completion: { (giphs, error) in
+        dataProvider?.search(withText: text, completion: { [weak self] (giphs, error) in
             if let error = error {
                 print(error)
             } else {
-                print(giphs)
+                self?.collectionController.giphs = giphs
             }
         })
     }

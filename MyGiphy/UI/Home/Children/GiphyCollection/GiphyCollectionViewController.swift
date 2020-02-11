@@ -7,19 +7,54 @@
 //
 
 import UIKit
+import Kingfisher
 
 class GiphyCollectionViewController: UIViewController {
     
-       // MARK: Properties
-       private let baseView = GiphyCollectionView()
-       
-       // MARK: Lifecycle
-       override func loadView() {
-           super.loadView()
-           view = baseView
-       }
+    // MARK: Properties
+    private let baseView = GiphyCollectionView()
+    
+    var giphs = [Giph]() {
+        didSet {
+            guard let collection = baseView.collection else { return }
+            collection.reloadData()
+        }
+    }
+    
+    // MARK: Lifecycle
+    override func loadView() {
+        super.loadView()
+        view = baseView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        baseView.collection.dataSource = self
+        baseView.collection.delegate = self
+    }
+}
 
-       override func viewDidLoad() {
-           super.viewDidLoad()
-       }
+extension GiphyCollectionViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return giphs.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as GiphyCollectionViewCell
+        let giph = giphs[indexPath.row]
+        guard let url = URL(string: giph.thumbnailURL) else { return cell }
+        cell.giphView.kf.setImage(with: url)
+        return cell
+    }
+}
+
+extension GiphyCollectionViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 100)
+    }
 }
