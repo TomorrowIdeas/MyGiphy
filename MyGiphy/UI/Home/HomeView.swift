@@ -45,6 +45,7 @@ class HomeView: UIView, ProgrammaticLayoutView {
         ])
     }
     
+    /// Moves the inputContainer by modifing its bottom anchor constant
     func moveSearchContainer(offset: CGFloat) {
         searchBottom.constant = offset
         

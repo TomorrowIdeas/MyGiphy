@@ -29,6 +29,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Add children
         expandingInputController.delegate = self
         add(childController: expandingInputController, toView: baseView.inputContainer)
         expandingInputController.iconImage = UIImage(named: "add_icon")

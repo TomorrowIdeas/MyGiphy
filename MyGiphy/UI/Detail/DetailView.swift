@@ -66,7 +66,7 @@ class DetailView: UIView, ProgrammaticLayoutView {
         ])
     }
     
-    // Moves the inputContainer by modifing its bottom anchor constant
+    /// Moves the inputContainer by modifing its bottom anchor constant
     func moveInputContainer(offset: CGFloat) {
         inputBottom.constant = offset
         
