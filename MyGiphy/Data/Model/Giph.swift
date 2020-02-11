@@ -31,19 +31,21 @@ struct Giph: Codable {
     }
     
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        id = try container.decode(String.self, forKey: .id)
-        title = try container.decode(String.self, forKey: .title)
-        
-        let imagesInfo = try container.nestedContainer(keyedBy: ImagesCodingKeys.self, forKey: .images)
-        
-        let originalInfo = try imagesInfo.nestedContainer(keyedBy: OriginalCodingKeys.self, forKey: .original)
-        let downsizedInfo = try imagesInfo.nestedContainer(keyedBy: DownsizedCodingKeys.self, forKey: .downsized)
-        
         do {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            id = try container.decode(String.self, forKey: .id)
+            title = try container.decode(String.self, forKey: .title)
+            
+            let imagesInfo = try container.nestedContainer(keyedBy: ImagesCodingKeys.self, forKey: .images)
+            
+            let originalInfo = try imagesInfo.nestedContainer(keyedBy: OriginalCodingKeys.self, forKey: .original)
             url = try originalInfo.decode(String.self, forKey: .url)
+
+            let downsizedInfo = try imagesInfo.nestedContainer(keyedBy: DownsizedCodingKeys.self, forKey: .downsized)
             thumbnailURL = try downsizedInfo.decode(String.self, forKey: .url)
         } catch {
+            id = ""
+            title = ""
             url = ""
             thumbnailURL = ""
         }

@@ -16,9 +16,16 @@ class DetailView: UIView, ProgrammaticLayoutView {
     
     // MARK: Stored constraints
     
+    // MARK: Initialization
+    convenience init() {
+        self.init(frame: .zero)
+        configureSubviews()
+        configureLayout()
+    }
+    
     // MARK: Configuration methods
     func configureSubviews() {
-        
+        backgroundColor = .white
     }
     
     func configureLayout() {

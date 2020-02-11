@@ -10,4 +10,13 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    // MARK: Properties
+    private let baseView = DetailView()
+    var giph: Giph?
+    
+    // MARK: Lifecycle
+    override func loadView() {
+        super.loadView()
+        view = baseView
+    }
 }

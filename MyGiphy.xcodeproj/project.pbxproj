@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,7 @@
 		D67896EF23074E860059BA75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67896EE23074E860059BA75 /* ViewController.swift */; };
 		D67896F423074E880059BA75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D67896F323074E880059BA75 /* Assets.xcassets */; };
 		D67896F723074E880059BA75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67896F523074E880059BA75 /* LaunchScreen.storyboard */; };
+		F10EFA9023F22971004C74CD /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EFA8F23F22971004C74CD /* Collection+.swift */; };
 		F150D24E23F2079D0039A49D /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150D24D23F2079D0039A49D /* UIView+Anchors.swift */; };
 		F150D25023F207A70039A49D /* UIViewController+Children.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150D24F23F207A70039A49D /* UIViewController+Children.swift */; };
 		F150D25323F209BC0039A49D /* ProgrammaticLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150D25223F209BC0039A49D /* ProgrammaticLayoutView.swift */; };
@@ -43,6 +44,7 @@
 		D67896F323074E880059BA75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D67896F623074E880059BA75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D67896F823074E880059BA75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F10EFA8F23F22971004C74CD /* Collection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
 		F150D24D23F2079D0039A49D /* UIView+Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Anchors.swift"; sourceTree = "<group>"; };
 		F150D24F23F207A70039A49D /* UIViewController+Children.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Children.swift"; sourceTree = "<group>"; };
 		F150D25223F209BC0039A49D /* ProgrammaticLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticLayoutView.swift; sourceTree = "<group>"; };
@@ -120,7 +122,6 @@
 				011BDBC00D8D69F3C3822F98 /* Pods-MyGiphy.debug.xcconfig */,
 				B054CEAB1BB46407160EE9D4 /* Pods-MyGiphy.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -130,6 +131,7 @@
 				F150D24D23F2079D0039A49D /* UIView+Anchors.swift */,
 				F150D24F23F207A70039A49D /* UIViewController+Children.swift */,
 				F1CE8F0923F220B3005C0E7F /* UICollectionViewCell+.swift */,
+				F10EFA8F23F22971004C74CD /* Collection+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -400,6 +402,7 @@
 				F1CE8F0823F2203F005C0E7F /* GiphyCollectionViewCell.swift in Sources */,
 				F150D26323F210580039A49D /* GiphyCollectionView.swift in Sources */,
 				F150D25823F20A9E0039A49D /* MasterView.swift in Sources */,
+				F10EFA9023F22971004C74CD /* Collection+.swift in Sources */,
 				F150D26123F2102B0039A49D /* GiphyCollectionViewController.swift in Sources */,
 				F1E23D0323F1FE1A00C6E4DF /* GiphyNetworkService.swift in Sources */,
 				F150D25E23F20F690039A49D /* ExpandingInputView.swift in Sources */,

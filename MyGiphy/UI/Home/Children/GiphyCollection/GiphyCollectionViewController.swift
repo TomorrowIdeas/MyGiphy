@@ -9,9 +9,15 @@
 import UIKit
 import Kingfisher
 
+protocol GiphyCollectionDelegate {
+    func didSelect(giph: Giph, controller: GiphyCollectionViewController)
+    func collectionDidBeginScrolling(controller: GiphyCollectionViewController)
+}
+
 class GiphyCollectionViewController: UIViewController {
     
     // MARK: Properties
+    var delegate: GiphyCollectionDelegate?
     private let baseView = GiphyCollectionView()
     
     var giphs = [Giph]() {
@@ -54,7 +60,16 @@ extension GiphyCollectionViewController: UICollectionViewDataSource {
 }
 
 extension GiphyCollectionViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let giph = giphs[safe: indexPath.row] else { return }
+        delegate?.didSelect(giph: giph, controller: self)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 100)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        delegate?.collectionDidBeginScrolling(controller: self)
     }
 }

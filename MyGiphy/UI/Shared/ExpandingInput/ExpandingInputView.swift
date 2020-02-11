@@ -41,6 +41,8 @@ class ExpandingInputView: UIView, ProgrammaticLayoutView {
         inputButton.setTitle("GO", for: .normal)
         inputButton.titleLabel?.font = UIFont(name: "Avenir-BlackOblique", size: 15)
         inputButton.setTitleColor(.black, for: .normal)
+        inputButton.backgroundColor = .white
+        inputButton.layer.cornerRadius = 25
         
         textField.placeholder = "Search Giphy!"
         textField.font = UIFont(name: "Avenir", size: 12)

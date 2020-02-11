@@ -30,6 +30,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         // Add Children
+        collectionController.delegate = self
         add(childController: collectionController, toView: baseView.collectionContainer)
         
         expandingInputController.delegate = self
@@ -53,6 +54,17 @@ class HomeViewController: UIViewController {
             else { return }
         
         baseView.moveSearchContainer(offset: -keyboardHeight - 20)
+    }
+}
+
+extension HomeViewController: GiphyCollectionDelegate {
+    func didSelect(giph: Giph, controller: GiphyCollectionViewController) {
+        let detailVC = DetailViewController()
+        present(detailVC, animated: true)
+    }
+    
+    func collectionDidBeginScrolling(controller: GiphyCollectionViewController) {
+        expandingInputController.toggleInactive()
     }
 }
 
