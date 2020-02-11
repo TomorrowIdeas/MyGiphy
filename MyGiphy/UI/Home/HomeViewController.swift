@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     
     // Data
     internal var dataProvider: GiphyDataProvider?
+    internal var factory: ControllerFactory?
     
     // MARK: Lifecycle
     override func loadView() {
@@ -35,7 +36,10 @@ class HomeViewController: UIViewController {
         
         expandingInputController.delegate = self
         add(childController: expandingInputController, toView: baseView.searchContainer)
+        expandingInputController.placeholderText = "Search Giphy!"
+        expandingInputController.iconImage = UIImage(named: "search_icon")
         
+        // Setup keyboard observers
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -59,7 +63,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: GiphyCollectionDelegate {
     func didSelect(giph: Giph, controller: GiphyCollectionViewController) {
-        let detailVC = DetailViewController()
+        guard let detailVC = factory?.createDetailController(giph: giph) else { return }
         present(detailVC, animated: true)
     }
     

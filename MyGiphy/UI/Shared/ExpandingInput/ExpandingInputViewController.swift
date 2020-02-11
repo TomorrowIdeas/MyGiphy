@@ -14,6 +14,19 @@ protocol ExpandingInputDelegate {
 
 class ExpandingInputViewController: UIViewController {
     
+    // MARK: Public View Properties
+    var placeholderText: String = "" {
+        didSet {
+            baseView.textField.placeholder = self.placeholderText
+        }
+    }
+    
+    var iconImage: UIImage? = nil {
+        didSet {
+            baseView.inputIcon.image = self.iconImage
+        }
+    }
+    
     // MARK: Properties
     private let baseView = ExpandingInputView()
     internal var delegate: ExpandingInputDelegate?
@@ -40,6 +53,7 @@ class ExpandingInputViewController: UIViewController {
     
     func toggleInactive() {
         baseView.becomeInactive()
+        baseView.textField.text = ""
         baseView.textField.resignFirstResponder()
     }
     

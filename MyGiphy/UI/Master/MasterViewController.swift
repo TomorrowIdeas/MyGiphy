@@ -12,8 +12,8 @@ class MasterViewController: UIViewController {
     
     // MARK: Properties
     private let baseView = MasterView.init()
-    private let homeViewController = HomeViewController()
     private let networkService = GiphyNetworkService()
+    private var homeViewController: HomeViewController!
     
     override func loadView() {
         super.loadView()
@@ -23,8 +23,8 @@ class MasterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let dataProvider = GiphyDataProvider(networkService: networkService)
-        homeViewController.dataProvider = dataProvider
+        let factory = ControllerFactory(networkService: networkService)
+        homeViewController = factory.createHomeController()
         add(childController: homeViewController, toView: baseView.contentView)
     }
 }

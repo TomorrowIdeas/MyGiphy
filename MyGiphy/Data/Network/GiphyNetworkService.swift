@@ -49,7 +49,11 @@ final class GiphyNetworkService {
         dataTask.resume()
     }
     
-    internal func createGiphComment(content: String) {
-        
+    // Pretend as if this is part of the API
+    internal func createGiphComment(content: String, giphID: String, completion: @escaping (_ comment: Comment, _ error: Error?) -> ()) {
+        let comment = Comment(content: content, giphID: giphID)
+        DispatchQueue.main.async {
+            completion(comment, nil)
+        }
     }
 }

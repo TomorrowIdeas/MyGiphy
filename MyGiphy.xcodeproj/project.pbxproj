@@ -13,6 +13,9 @@
 		D67896F423074E880059BA75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D67896F323074E880059BA75 /* Assets.xcassets */; };
 		D67896F723074E880059BA75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67896F523074E880059BA75 /* LaunchScreen.storyboard */; };
 		F10EFA9023F22971004C74CD /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EFA8F23F22971004C74CD /* Collection+.swift */; };
+		F10EFA9223F22CE1004C74CD /* GiphCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EFA9123F22CE1004C74CD /* GiphCommentTableViewCell.swift */; };
+		F10EFA9423F22ED9004C74CD /* ControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EFA9323F22ED9004C74CD /* ControllerFactory.swift */; };
+		F10EFA9623F2304B004C74CD /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EFA9523F2304B004C74CD /* Comment.swift */; };
 		F150D24E23F2079D0039A49D /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150D24D23F2079D0039A49D /* UIView+Anchors.swift */; };
 		F150D25023F207A70039A49D /* UIViewController+Children.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150D24F23F207A70039A49D /* UIViewController+Children.swift */; };
 		F150D25323F209BC0039A49D /* ProgrammaticLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150D25223F209BC0039A49D /* ProgrammaticLayoutView.swift */; };
@@ -45,6 +48,9 @@
 		D67896F623074E880059BA75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D67896F823074E880059BA75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F10EFA8F23F22971004C74CD /* Collection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
+		F10EFA9123F22CE1004C74CD /* GiphCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphCommentTableViewCell.swift; sourceTree = "<group>"; };
+		F10EFA9323F22ED9004C74CD /* ControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerFactory.swift; sourceTree = "<group>"; };
+		F10EFA9523F2304B004C74CD /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		F150D24D23F2079D0039A49D /* UIView+Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Anchors.swift"; sourceTree = "<group>"; };
 		F150D24F23F207A70039A49D /* UIViewController+Children.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Children.swift"; sourceTree = "<group>"; };
 		F150D25223F209BC0039A49D /* ProgrammaticLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticLayoutView.swift; sourceTree = "<group>"; };
@@ -185,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				F1E23CF223F1FD7300C6E4DF /* GiphyDataProvider.swift */,
+				F10EFA9323F22ED9004C74CD /* ControllerFactory.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -224,7 +231,7 @@
 			children = (
 				F1E23CFD23F1FDF200C6E4DF /* DetailViewController.swift */,
 				F1E23CFF23F1FDFC00C6E4DF /* DetailView.swift */,
-				F1E23D0123F1FE0100C6E4DF /* Children */,
+				F10EFA9123F22CE1004C74CD /* GiphCommentTableViewCell.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -246,13 +253,6 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		F1E23D0123F1FE0100C6E4DF /* Children */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Children;
-			sourceTree = "<group>";
-		};
 		F1E23D0423F1FE3300C6E4DF /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				F1E23D0623F2003000C6E4DF /* Giph.swift */,
+				F10EFA9523F2304B004C74CD /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -401,9 +402,11 @@
 				F1E23D0E23F204A300C6E4DF /* GiphySearchResult.swift in Sources */,
 				F1CE8F0823F2203F005C0E7F /* GiphyCollectionViewCell.swift in Sources */,
 				F150D26323F210580039A49D /* GiphyCollectionView.swift in Sources */,
+				F10EFA9423F22ED9004C74CD /* ControllerFactory.swift in Sources */,
 				F150D25823F20A9E0039A49D /* MasterView.swift in Sources */,
 				F10EFA9023F22971004C74CD /* Collection+.swift in Sources */,
 				F150D26123F2102B0039A49D /* GiphyCollectionViewController.swift in Sources */,
+				F10EFA9623F2304B004C74CD /* Comment.swift in Sources */,
 				F1E23D0323F1FE1A00C6E4DF /* GiphyNetworkService.swift in Sources */,
 				F150D25E23F20F690039A49D /* ExpandingInputView.swift in Sources */,
 				D67896EF23074E860059BA75 /* ViewController.swift in Sources */,
@@ -413,6 +416,7 @@
 				F150D25023F207A70039A49D /* UIViewController+Children.swift in Sources */,
 				F1CE8F0A23F220B3005C0E7F /* UICollectionViewCell+.swift in Sources */,
 				F1E23D0023F1FDFC00C6E4DF /* DetailView.swift in Sources */,
+				F10EFA9223F22CE1004C74CD /* GiphCommentTableViewCell.swift in Sources */,
 				F1E23CFE23F1FDF200C6E4DF /* DetailViewController.swift in Sources */,
 				F1E23CF923F1FD9D00C6E4DF /* HomeView.swift in Sources */,
 				F150D25623F20A600039A49D /* MasterViewController.swift in Sources */,
